@@ -4,9 +4,9 @@ require APP_ROOT . "/views/inc/header.php";
 ?>
 
 <!-- Login Form -->
-<div class="col-md-4 bg-dark rounded mx-auto ">
-    <div class="card bg-dark bg-gradient p-3">
-        <div class="card-body text-white">
+<div class="col-md-4 bg-light rounded mx-auto ">
+    <div class="card bg-light bg-gradient p-3">
+        <div class="card-body text-dark">
             <h3 class="text-center">Login</h3>
             <form action="<?php echo URL_ROOT; ?>/users/login" method="post">
 
@@ -14,9 +14,9 @@ require APP_ROOT . "/views/inc/header.php";
 
                     <label for="useremail" class="form-label">Email address<sup>*<sup></label>
 
-                    <input type="email" name="email" class="form-control mb-2 <?= !empty($data["name_error"]) ? "is-invalid" : ''; ?>" id="useremail" aria-describedby="emailHelp" placeholder="example@mail.com" value="<?= $data["email"]; ?>">
+                    <input type="email" name="email" class="form-control mb-2 <?= !empty($data["email_error"]) ? "is-invalid" : ''; ?>" id="useremail" aria-describedby="emailHelp" placeholder="example@mail.com" value="<?= $data["email"]; ?>">
 
-                    <span class="invalid-feedback"><?= $data["name_error"]; ?></span>
+                    <span class="invalid-feedback"><?= $data["email_error"]; ?></span>
 
                 </div>
 
