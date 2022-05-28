@@ -23,8 +23,8 @@ require APP_ROOT . "/views/inc/header.php";
             <div class="col-md-4 text-dark">
                 <div class="card">
                     <div class="card-body">
-                        <h3>Create an account</h3>
-                        <form>
+                        <h3 class="text-center">Create an Account</h3>
+                        <form action="<?php echo URL_ROOT; ?>/users/signup" method="post">
                             <div class="mb-3">
                                 <!-- Name -->
                                 <label for="username" class="form-label">User Name</label>
@@ -51,7 +51,9 @@ require APP_ROOT . "/views/inc/header.php";
                                 <input type="checkbox" class="form-check-input" id="rememberMe">
                                 <label class="form-check-label" for="rememberMe">Remember Me</label>
                             </div>
-                            <button type="submit" name="signup" class="btn btn-primary">Submit</button>
+                            <div class="text-center text-end">
+                                <button type="submit" name="signup" class="btn btn-primary">Create Account</button>
+                            </div>
                         </form>
                     </div>
                 </div>
