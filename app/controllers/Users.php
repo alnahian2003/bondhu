@@ -3,6 +3,7 @@ class Users extends Controller
 {
     public function __construct()
     {
+        $this->userModel = $this->model("User");
     }
 
     public function signup()
@@ -27,26 +28,30 @@ class Users extends Controller
 
             // Validate Name
             if (empty($data["username"])) {
-                $data["username_error"] = "Please enter your name!";
+                $data["username_error"] = "Please enter your name.";
             }
 
             // Validate Email
             if (empty($data["email"])) {
-                $data["email_error"] = "Please enter your email!";
+                $data["email_error"] = "Please enter your email.";
+            } else {
+                if ($this->userModel->findUserByEmail($data["email"])) {
+                    $data["email_error"] = "Email already taken.";
+                }
             }
 
             // Validate Password
             if (empty($data["password"])) {
-                $data["password_error"] = "Please enter a password!";
+                $data["password_error"] = "Please enter a password.";
             } elseif (strlen($data["password"]) < 6) {
-                $data["password_error"] = "Password must be at least 6 characters!";
+                $data["password_error"] = "Password must be at least 6 characters.";
             }
 
             // Validate Confirm Password
             if (empty($data["confirmPassword"])) {
-                $data["confirmPassword_error"] = "Please enter a password!";
+                $data["confirmPassword_error"] = "Please enter your password.";
             } elseif ($data["confirmPassword"] != $data["password"]) {
-                $data["confirmPassword_error"] = "Passwords should match!";
+                $data["confirmPassword_error"] = "Passwords should match.";
             }
 
             // Make sure, errors are empty
