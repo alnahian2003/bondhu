@@ -2,7 +2,7 @@
   Options -Multiviews
   RewriteEngine On
   # Use your own filename here
-  RewriteBase /alanmvc/public
+  RewriteBase /bondhu/public
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]

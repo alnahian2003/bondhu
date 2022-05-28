@@ -18,8 +18,8 @@
 
             <!-- Navbar CTA Button -->
             <div class="text-end">
-                <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                <button type="button" class="btn btn-success">Sign-up</button>
+                <a href="./login" type="button" class="btn btn-outline-primary me-2">Login</a>
+                <a href="./signup" type="button" class="btn btn-success">Sign-up</a>
             </div>
 
         </div>
