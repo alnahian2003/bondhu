@@ -11,11 +11,11 @@ require APP_ROOT . "/views/inc/header.php";
             <form action="<?php echo URL_ROOT; ?>/users/signup" method="post">
                 <div class="mb-3">
                     <!-- Name -->
-                    <label for="username" class="form-label">User Name<sup>*<sup></label>
+                    <label for="name" class="form-label">Name<sup>*<sup></label>
 
-                    <input type="text" name="username" class="form-control mb-2 <?= !empty($data["username_error"]) ? "is-invalid" : ''; ?>" id="username" placeholder="e.g. alnahian2003" value="<?= $data["username"]; ?>">
+                    <input type="text" name="name" class="form-control mb-2 <?= !empty($data["name_error"]) ? "is-invalid" : ''; ?>" id="name" placeholder="John Doe" value="<?= $data["name"]; ?>">
 
-                    <span class="invalid-feedback"><?= $data["username_error"]; ?></span>
+                    <span class="invalid-feedback"><?= $data["name_error"]; ?></span>
                 </div>
 
 

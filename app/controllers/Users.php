@@ -14,21 +14,21 @@ class Users extends Controller
 
             // Init data
             $data = [
-                "username" => htmlspecialchars(trim($_POST["username"])),
+                "name" => htmlspecialchars(trim($_POST["name"])),
                 "email" => htmlspecialchars(trim($_POST["email"])),
                 "password" => htmlspecialchars(trim($_POST["password"])),
                 "confirmPassword" => htmlspecialchars(trim($_POST["confirmPassword"])),
 
                 // Error variables
-                "username_error" => "",
+                "name_error" => "",
                 "email_error" => "",
                 "password_error" => "",
                 "confirmPassword_error" => "",
             ];
 
             // Validate Name
-            if (empty($data["username"])) {
-                $data["username_error"] = "Please enter your name.";
+            if (empty($data["name"])) {
+                $data["name_error"] = "Please enter your name.";
             }
 
             // Validate Email
@@ -55,8 +55,19 @@ class Users extends Controller
             }
 
             // Make sure, errors are empty
-            if (empty($data["username_error"]) && empty($data["email_error"]) && empty($data["password_error"]) && empty($data["confirmPassword_error"])) {
-                die("Account Created Successfully");
+            if (empty($data["name_error"]) && empty($data["email_error"]) && empty($data["password_error"]) && empty($data["confirmPassword_error"])) {
+                // User Inputs Validated ✅
+
+                // Hash the password
+                $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
+
+                // Register the User Finally
+                if ($this->userModel->register($data)) {
+                    // Redirect to homepage
+                    redirct("/users/login");
+                } else {
+                    die("Something Went Wrong, can't register");
+                }
             } else {
                 // Load view with errors
                 return $this->view("users/signup", $data);
@@ -64,13 +75,13 @@ class Users extends Controller
         } else {
             // Init data
             $data = [
-                "username" => "",
+                "name" => "",
                 "email" => "",
                 "password" => "",
                 "confirmPassword" => "",
 
                 // Error variables
-                "username_error" => "",
+                "name_error" => "",
                 "email_error" => "",
                 "password_error" => "",
                 "confirmPassword_error" => "",
