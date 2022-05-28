@@ -13,9 +13,9 @@ require APP_ROOT . "/views/inc/header.php";
                     <!-- Name -->
                     <label for="username" class="form-label">User Name<sup>*<sup></label>
 
-                    <input type="username" class="form-control mb-2 <?= !empty($data["name_error"]) ? "is-invalid" : ''; ?>" id="username" placeholder="e.g. alnahian2003" value="<?= $data["name"]; ?>">
+                    <input type="text" name="username" class="form-control mb-2 <?= !empty($data["username_error"]) ? "is-invalid" : ''; ?>" id="username" placeholder="e.g. alnahian2003" value="<?= $data["username"]; ?>">
 
-                    <span class="invalid-feedback"><?= $data["name_error"]; ?></span>
+                    <span class="invalid-feedback"><?= $data["username_error"]; ?></span>
                 </div>
 
 
