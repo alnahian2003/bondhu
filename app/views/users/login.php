@@ -4,9 +4,9 @@ require APP_ROOT . "/views/inc/header.php";
 ?>
 
 <!-- Login Form -->
-<div class="col-md-4 text-dark bg-light rounded mx-auto p-3">
-    <div class="card border-light bg-light">
-        <div class="card-body bg-light">
+<div class="col-md-4 bg-dark rounded mx-auto ">
+    <div class="card bg-dark bg-gradient p-3">
+        <div class="card-body text-white">
             <h3 class="text-center">Login</h3>
             <form action="<?php echo URL_ROOT; ?>/users/login" method="post">
 
@@ -36,8 +36,8 @@ require APP_ROOT . "/views/inc/header.php";
                 </div>
 
 
-                <div class="text-center text-end">
-                    <button type="submit" name="login" class="btn btn-primary">Log In</button>
+                <div class="text-center d-block">
+                    <button type="submit" name="login" class="btn btn-primary d-block w-100 bg-gradient">Log In</button>
                 </div>
             </form>
             <div class="text-center mt-3">
