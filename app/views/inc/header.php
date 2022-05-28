@@ -19,3 +19,9 @@
 </head>
 
 <body>
+
+    <!-- General Navbar -->
+    <?php include "../app/views/inc/navbar.php"; ?>
+
+    <!-- Main Container -->
+    <div class="container">

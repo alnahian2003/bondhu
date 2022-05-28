@@ -11,15 +11,15 @@
         <!-- Collapsible Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li class="nav-item"><a href="./" class="nav-link px-2 text-dark">Home</a></li>
-                <li class="nav-item"><a href="./pages/features" class="nav-link px-2 text-dark">Features</a></li>
-                <li class="nav-item"><a href="./pages/about" class="nav-link px-2 text-dark">About</a></li>
+                <li class="nav-item"><a href="<?= URL_ROOT; ?>/" class="nav-link px-2 text-dark">Home</a></li>
+                <li class="nav-item"><a href="<?= URL_ROOT; ?>/pages/features" class="nav-link px-2 text-dark">Features</a></li>
+                <li class="nav-item"><a href="<?= URL_ROOT; ?>/pages/about" class="nav-link px-2 text-dark">About</a></li>
             </ul>
 
             <!-- Navbar CTA Button -->
             <div class="text-end">
-                <a href="./login" type="button" class="btn btn-outline-primary me-2">Login</a>
-                <a href="./signup" type="button" class="btn btn-success">Sign-up</a>
+                <a href="<?= URL_ROOT; ?>/login" type="button" class="btn btn-outline-primary me-2">Login</a>
+                <a href="<?= URL_ROOT; ?>/signup" type="button" class="btn btn-success">Sign-up</a>
             </div>
 
         </div>
