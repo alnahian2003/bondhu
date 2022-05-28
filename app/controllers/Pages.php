@@ -9,8 +9,8 @@ class Pages extends Controller
     public function index()
     {
         $data = [
-            "title" => "Welcome to AlanMVC",
-            "subtitle" => "Your Personal Micro MVC Framework!",
+            "title" => "Welcome to Bondhu",
+            "subtitle" => "Where friends get connected",
         ];
         $this->view("pages/index", $data);
     }
