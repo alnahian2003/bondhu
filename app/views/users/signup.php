@@ -23,9 +23,9 @@ require APP_ROOT . "/views/inc/header.php";
 
                     <label for="useremail" class="form-label">Email address<sup>*<sup></label>
 
-                    <input type="email" name="email" class="form-control mb-2 <?= !empty($data["name_error"]) ? "is-invalid" : ''; ?>" id="useremail" aria-describedby="emailHelp" placeholder="example@mail.com" value="<?= $data["email"]; ?>">
+                    <input type="email" name="email" class="form-control mb-2 <?= !empty($data["email_error"]) ? "is-invalid" : ''; ?>" id="useremail" aria-describedby="emailHelp" placeholder="example@mail.com" value="<?= $data["email"]; ?>">
 
-                    <span class="invalid-feedback"><?= $data["name_error"]; ?></span>
+                    <span class="invalid-feedback"><?= $data["email_error"]; ?></span>
 
                 </div>
 

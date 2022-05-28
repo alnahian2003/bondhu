@@ -10,7 +10,7 @@ class Users extends Controller
         // Check for POST request
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Process the form
-            die("Submitted");
+
             // Init data
             $data = [
                 "username" => htmlspecialchars(trim($_POST["username"])),
@@ -19,15 +19,15 @@ class Users extends Controller
                 "confirmPassword" => htmlspecialchars(trim($_POST["confirmPassword"])),
 
                 // Error variables
-                "name_error" => "",
+                "username_error" => "",
                 "email_error" => "",
                 "password_error" => "",
                 "confirmPassword_error" => "",
             ];
 
             // Validate Name
-            if (empty($data["name"])) {
-                $data["name_error"] = "Please enter your name!";
+            if (empty($data["username"])) {
+                $data["username_error"] = "Please enter your name!";
             }
 
             // Validate Email
@@ -38,8 +38,8 @@ class Users extends Controller
             // Validate Password
             if (empty($data["password"])) {
                 $data["password_error"] = "Please enter a password!";
-            } elseif (strlen($data["password"] < 6)) {
-                $data["password_error"] = "Password must be atleast 6 characters!";
+            } elseif (strlen($data["password"]) < 6) {
+                $data["password_error"] = "Password must be at least 6 characters!";
             }
 
             // Validate Confirm Password
@@ -52,6 +52,9 @@ class Users extends Controller
             // Make sure, errors are empty
             if (empty($data["username_error"]) && empty($data["email_error"]) && empty($data["password_error"]) && empty($data["confirmPassword_error"])) {
                 die("Account Created Successfully");
+            } else {
+                // Load view with errors
+                return $this->view("users/signup", $data);
             }
         } else {
             // Init data
@@ -62,7 +65,7 @@ class Users extends Controller
                 "confirmPassword" => "",
 
                 // Error variables
-                "name_error" => "",
+                "username_error" => "",
                 "email_error" => "",
                 "password_error" => "",
                 "confirmPassword_error" => "",
