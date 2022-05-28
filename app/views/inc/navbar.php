@@ -1,4 +1,4 @@
-<nav style="--bs-bg-opacity: .75;" class="navbar navbar-expand-lg bg-light bg-gradient mb-3 fixed-top">
+<nav style="--bs-bg-opacity: .70;" class="navbar navbar-expand-lg bg-light bg-gradient mb-3 fixed-top">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand fw-bold" href="<?= URL_ROOT; ?>">Bondhu</a>

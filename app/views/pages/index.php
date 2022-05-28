@@ -11,7 +11,7 @@ require APP_ROOT . "/views/inc/header.php";
                 <h1 class="display-4"><?= $data["title"]; ?></h1>
                 <p class="lead">Where friends get connected!</p>
                 <hr class="my-2">
-                <p class="lead">
+                <p class="lead my-4">
                     Bondhu is a simple social media platform to connect people around the world 🌎<br>
                 </p>
                 <p class="lead">
@@ -26,19 +26,32 @@ require APP_ROOT . "/views/inc/header.php";
                         <h3>Create an account</h3>
                         <form>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <!-- Name -->
+                                <label for="username" class="form-label">User Name</label>
+                                <input type="name" class="form-control mb-2" id="username" placeholder="e.g. alnahian2003">
+                            </div>
+                            <div class="mb-3">
+                                <label for="useremail" class="form-label">Email address</label>
+                                <input type="email" class="form-control mb-2" id="useremail" aria-describedby="emailHelp" placeholder="example@mail.com">
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control mb-2" id="password" placeholder="••••••">
+
                             </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control mb-2" id="password" placeholder="••••••">
+
+                            </div>
+
                             <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember Me</label>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="signup" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
