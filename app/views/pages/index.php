@@ -55,6 +55,9 @@ require APP_ROOT . "/views/inc/header.php";
                                 <button type="submit" name="signup" class="btn btn-primary">Create Account</button>
                             </div>
                         </form>
+                        <div class="text-center mt-3">
+                            <a href="<?= URL_ROOT; ?>/users/login">Have an account? Login</a>
+                        </div>
                     </div>
                 </div>
             </div>
