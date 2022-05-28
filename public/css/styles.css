@@ -1,6 +1,11 @@
 /* This is the main stylesheet file for writing css codes */
 
 /* Boostrap Styles Override */
+
+body {
+  margin-top: 8rem !important;
+}
+
 a {
   text-decoration: none !important;
 }
@@ -10,6 +15,6 @@ nav {
   backdrop-filter: blur(8px); /* adds a smooth filter to the backgrounds */
 }
 
-main {
-  margin: 8rem auto 5rem auto !important;
+footer {
+  margin-top: 4rem !important;
 }
