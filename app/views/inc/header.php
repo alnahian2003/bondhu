@@ -24,4 +24,4 @@
     <?php include "../app/views/inc/navbar.php"; ?>
 
     <!-- Main Container -->
-    <div class="container">
+    <main class="container">

@@ -4,3 +4,12 @@
 a {
   text-decoration: none !important;
 }
+
+nav {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px); /* adds a smooth filter to the backgrounds */
+}
+
+main {
+  margin: 6rem auto !important;
+}

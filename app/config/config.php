@@ -14,7 +14,10 @@ define("APP_ROOT", dirname(dirname(__FILE__)));
 define("URL_ROOT", "http://localhost/bondhu");
 
 // Site Name
-define("SITE_NAME", "Bondhu — Where Friends Get Connected");
+define("SITE_NAME", "Bondhu");
+
+// Brand Slogan/Motto
+define("SLOGAN", "Where Friends Get Connected");
 
 // Author
 define("AUTHOR", "Al Nahian");

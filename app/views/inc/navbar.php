@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light mb-3">
+<nav style="--bs-bg-opacity: .75;" class="navbar navbar-expand-lg bg-light bg-gradient mb-3 fixed-top">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand fw-bold" href="<?= URL_ROOT; ?>">Bondhu</a>
@@ -18,8 +18,8 @@
 
             <!-- Navbar CTA Button -->
             <div class="text-center">
-                <a href="<?= URL_ROOT; ?>/login" type="button" class="btn btn-outline-primary me-2">Login</a>
-                <a href="<?= URL_ROOT; ?>/signup" type="button" class="btn btn-success">Sign-up</a>
+                <a href="<?= URL_ROOT; ?>/login" type="button" class="btn btn-outline-primary bg-gradient me-2">Login</a>
+                <a href="<?= URL_ROOT; ?>/signup" type="button" class="btn btn-success bg-gradient">Sign-up</a>
             </div>
 
         </div>
