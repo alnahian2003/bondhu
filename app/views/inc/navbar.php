@@ -18,7 +18,7 @@
 
             <!-- Navbar CTA Button -->
             <div class="text-center">
-                <a href="<?= URL_ROOT; ?>/users/login" type="button" class="btn btn-outline-primary bg-gradient me-2">Login</a>
+                <a href="<?= URL_ROOT; ?>/users/login" type="button" class="btn btn-outline-secondary bg-gradient me-2">Login</a>
                 <a href="<?= URL_ROOT; ?>/users/signup" type="button" class="btn btn-success bg-gradient">Sign-up</a>
             </div>
 
