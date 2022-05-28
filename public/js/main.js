@@ -1,0 +1,1 @@
+/* This is the main javascript file for writing js codes */
