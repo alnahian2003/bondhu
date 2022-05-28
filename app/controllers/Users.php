@@ -29,4 +29,9 @@ class Users extends Controller
             return $this->view("users/signup", $data);
         }
     }
+
+    public function login()
+    {
+        echo "hello";
+    }
 }

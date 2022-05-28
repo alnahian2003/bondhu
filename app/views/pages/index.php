@@ -63,6 +63,10 @@ require APP_ROOT . "/views/inc/header.php";
 </div>
 
 <?php
+// Include Features Widget
+include_once APP_ROOT . "/views/inc/features.php";
+
+
 // Include Footer
 require APP_ROOT . "/views/inc/footer.php";
 ?>

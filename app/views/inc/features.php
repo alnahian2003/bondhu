@@ -1,24 +1,3 @@
-<?php
-// Include Header
-require APP_ROOT . "/views/inc/header.php";
-?>
-<div class="p-5 bg-dark bg-gradient text-white rounded text-center h-100">
-    <div class="container">
-        <div class="row d-flex flex-row justify-content-between align-items-center bs-gap-5">
-            <!-- Hero Left Item (Intro) -->
-            <div class="col-xl-12">
-                <h1 class="display-2">Simple | Easy | Friendly</h1>
-                <p class="lead py-3">
-                    Learn About Our Features, Before You Surf In 🏄‍♂️ <br><br>
-                    Bondhu is a simple social media platform to connect people around the world 🌎
-                </p>
-
-                <a class="btn btn-primary bg-gradient btn-lg" href="<?= URL_ROOT; ?>/signup" role="button">Get Started</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Features Panel -->
 <div class="container px-4 py-5">
     <h2 class="pb-2 text-center display-4">Features</h2>
@@ -83,7 +62,3 @@ require APP_ROOT . "/views/inc/header.php";
     </div>
 </div>
 <!-- End: Features Panel -->
-<?php
-// Include Footer
-require APP_ROOT . "/views/inc/footer.php";
-?>
