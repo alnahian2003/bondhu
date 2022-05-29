@@ -10,6 +10,7 @@ require APP_ROOT . "/views/inc/header.php";
 <div class="col-md-4 bg-light rounded mx-auto ">
     <div class="card bg-light bg-gradient p-3">
         <div class="card-body text-dark">
+            <?php flash("signup_success"); ?>
             <h3 class="text-center">Login</h3>
             <form action="<?php echo URL_ROOT; ?>/users/login" method="post">
 
