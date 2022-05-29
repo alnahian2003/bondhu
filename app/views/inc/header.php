@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<?= URL_ROOT; ?>/img/favicon.ico" type="image/x-icon">
+
     <!-- Boostrap 5.2 CDN -->
     <link rel="stylesheet" href="<?= URL_ROOT; ?>/css/bootstrap.min.css">
 
