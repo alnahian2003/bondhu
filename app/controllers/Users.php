@@ -66,7 +66,7 @@ class Users extends Controller
                     // Show Flash Message
                     flash("signup_success", "You are registerd. Please Log In!");
                     // Redirect to homepage
-                    redirct("users/login");
+                    redirect("users/login");
                 } else {
                     die("Something Went Wrong, can't register");
                 }
@@ -134,16 +134,21 @@ class Users extends Controller
                 // Check and set logged in user
                 $loggedInUser = $this->userModel->login($data["email"], $data["password"]);
                 if ($loggedInUser) {
+
                     // Cerate Session
+                    $this->createUserSession($loggedInUser);
                 } else {
+
                     $data["password_error"] = "Incorrect Password.";
                     return $this->view("users/login", $data);
                 }
             } else {
+
                 // Load view with errors
                 return $this->view("users/login", $data);
             }
         } else {
+
             //    Init data
             $data = [
                 "email" => "",
@@ -154,8 +159,44 @@ class Users extends Controller
                 "password_error" => ""
             ];
 
+
             // load view and pass the data
             return $this->view("users/login", $data);
         }
     }
+
+    public function createUserSession($loggedUser)
+    {
+        $_SESSION["user_id"] = $loggedUser->id;
+        $_SESSION["name"] = $loggedUser->name;
+        $_SESSION["email"] = $loggedUser->email;
+
+        redirect("pages/index");
+    }
+
+    public function logout()
+    {
+        unset($_SESSION["user_id"]);
+        unset($_SESSION["name"]);
+        unset($_SESSION["email"]);
+
+        session_destroy();
+
+        redirect("pages/index");
+    }
+
+    public function isLoggedIn()
+    {
+        if (isset($_SESSION["user_id"])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+
+
+/* 
+TODO:
+Change Sign Up Form to Sign In, in the home page to make it simple
+*/

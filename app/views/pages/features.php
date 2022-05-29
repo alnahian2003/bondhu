@@ -16,7 +16,7 @@ require APP_ROOT . "/views/inc/header.php";
                     Bondhu is a simple social media platform to connect people around the world 🌎
                 </p>
 
-                <a class="btn btn-primary bg-gradient btn-lg" href="<?= URL_ROOT; ?>/signup" role="button">Get Started</a>
+                <a class="btn btn-primary bg-gradient btn-lg" href="<?= URL_ROOT; ?>/users/signup" role="button">Get Started</a>
             </div>
         </div>
     </div>

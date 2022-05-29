@@ -10,7 +10,7 @@
 
         <!-- Collapsible Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center text-center mb-md-0">
+            <ul class="navbar-nav col-12 col-lg-auto me-lg-auto mb-2 text-center mb-md-0">
                 <li class="nav-item"><a href="<?= URL_ROOT; ?>/" class="nav-link px-2 text-dark">Home</a></li>
                 <li class="nav-item"><a href="<?= URL_ROOT; ?>/pages/features" class="nav-link px-2 text-dark">Features</a></li>
                 <li class="nav-item"><a href="<?= URL_ROOT; ?>/pages/about" class="nav-link px-2 text-dark">About</a></li>
@@ -18,10 +18,73 @@
 
             <!-- Navbar CTA Button -->
             <div class="text-center">
-                <a href="<?= URL_ROOT; ?>/users/login" type="button" class="btn btn-outline-secondary bg-gradient me-2">Login</a>
-                <a href="<?= URL_ROOT; ?>/users/signup" type="button" class="btn btn-success bg-gradient">Sign-up</a>
+                <?php if (!isset($_SESSION["user_id"])) : ?>
+                    <a href="<?= URL_ROOT; ?>/users/login" type="button" class="btn btn-outline-secondary bg-gradient me-2">Login</a>
+                    <a href="<?= URL_ROOT; ?>/users/signup" type="button" class="btn btn-success bg-gradient">Sign-up</a>
+                <?php endif; ?>
             </div>
-
         </div>
+
+        <?php if (isset($_SESSION["user_id"])) : ?>
+            <!-- Chat Dropdown -->
+            <div class="dropdown mx-2">
+
+                <!-- Dropdown button -->
+                <a href="#" class="d-block btn-lg link-secondary text-decoration-none dropdown-toggle" id="chatDropDown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    <i class="bi bi-chat-dots h3 text-muted"></i>
+                </a>
+                <!-- End: Dropdown Button -->
+
+                <!-- Dropdown menu -->
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end" aria-labelledby="chatDropDown">
+                    <div class="p-3" style="width: 18rem;">
+                        <h4 class="h4">Messages</h4>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Dropdown menu -->
+            </div>
+            <!-- Profile Dropdown -->
+            <div class="dropdown text-end">
+                <!-- Dropdown button -->
+                <a href="#" class="d-block link-secondary btn-lg text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle h3 text-muted"></i>
+                </a>
+                <!-- End: Dropdown button -->
+
+                <!-- Dropdown Menu -->
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="profileDropdown">
+                    <li>
+                        <h6 class="dropdown-header">Dropdown header</h6>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="<?= URL_ROOT; ?>/pages/profile">
+                            <i class="bi bi-person m-1"></i> Profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-gear m-1"></i> Settings
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <h6 class="dropdown-header">Dropdown header</h6>
+                    </li>
+                    <li><a class="dropdown-item" href="<?= URL_ROOT; ?>/users/logout">
+                            <i class="bi bi-box-arrow-right m-1"></i> Sign out
+                        </a>
+                    </li>
+                </ul>
+                <!-- End Dropdown Menu -->
+            </div>
+        <?php endif; ?>
     </div>
 </nav>
