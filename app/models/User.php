@@ -46,4 +46,22 @@ class User extends Database
             return false;
         }
     }
+
+    // Login an User
+    public function login($email, $password)
+    {
+        $this->db->query("SELECT * FROM users WHERE email = :email");
+        $this->db->bind(":email", $email);
+        // get the single row
+        $row = $this->db->single();
+
+        // Get hashed password from db
+        $hashed_password = $row->password;
+
+        if (password_verify($password, $hashed_password)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }
