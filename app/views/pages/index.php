@@ -25,17 +25,24 @@ require APP_ROOT . "/views/inc/header.php";
                     <div class="card-body">
                         <h3 class="text-center">Create an Account</h3>
                         <form action="<?php echo URL_ROOT; ?>/users/login" method="post">
-                            <!-- Email -->
+
                             <div class="mb-3">
-                                <label for="useremail" class="form-label">Email address</label>
-                                <input type="email" class="form-control mb-2" id="useremail" placeholder="example@mail.com">
+
+                                <label for="useremail" class="form-label">Email address<sup>*<sup></label>
+
+                                <input type="email" name="email" class="form-control mb-2 " id="useremail" aria-describedby="emailHelp" placeholder="example@mail.com" value="">
+
+                                <span class="invalid-feedback"></span>
 
                             </div>
 
-                            <!-- Password -->
+
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control mb-2" id="password" placeholder="••••••">
+                                <label for="password" class="form-label">Password<sup>*<sup></label>
+
+                                <input type="password" name="password" class="form-control mb-2" id="password" placeholder="minimum 6 characters">
+
+                                <span class="invalid-feedback"></span>
 
                             </div>
 
@@ -43,12 +50,14 @@ require APP_ROOT . "/views/inc/header.php";
                                 <input type="checkbox" class="form-check-input" id="rememberMe">
                                 <label class="form-check-label" for="rememberMe">Remember Me</label>
                             </div>
-                            <div class="text-center text-end">
-                                <button type="submit" name="login" class="btn btn-primary">Log In</button>
+
+
+                            <div class="text-center d-block">
+                                <button type="submit" name="login" class="btn btn-primary d-block w-100 bg-gradient">Log In</button>
                             </div>
                         </form>
                         <div class="text-center mt-3">
-                            <a href="<?= URL_ROOT; ?>/users/signup">Create New Account?</a>
+                            <a href="<?= URL_ROOT; ?>/users/signup">New to Bondhu? Sign In</a>
                         </div>
                     </div>
                 </div>
