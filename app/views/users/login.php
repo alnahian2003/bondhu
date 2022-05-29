@@ -1,4 +1,7 @@
 <?php
+// Site Title
+$site_title = "Login to Bondhu — " . SLOGAN;
+
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
 ?>

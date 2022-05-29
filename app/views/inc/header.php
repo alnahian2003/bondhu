@@ -18,8 +18,7 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="<?= URL_ROOT; ?>/css/styles.css">
 
-    
-    <title><?= isset($site_title) ? $site_title :  SITE_NAME;  ?></title>
+    <title><?= isset($site_title) ? $site_title :  SITE_NAME . " — " . SLOGAN;  ?></title>
 </head>
 
 <body>

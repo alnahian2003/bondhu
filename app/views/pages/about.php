@@ -1,4 +1,7 @@
 <?php
+// Site Title
+$site_title = "About Us";
+
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
 ?>
