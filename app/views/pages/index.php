@@ -24,25 +24,17 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="card">
                     <div class="card-body">
                         <h3 class="text-center">Create an Account</h3>
-                        <form action="<?php echo URL_ROOT; ?>/users/signup" method="post">
-                            <div class="mb-3">
-                                <!-- Name -->
-                                <label for="username" class="form-label">User Name</label>
-                                <input type="name" class="form-control mb-2" id="username" placeholder="e.g. alnahian2003">
-                            </div>
+                        <form action="<?php echo URL_ROOT; ?>/users/login" method="post">
+                            <!-- Email -->
                             <div class="mb-3">
                                 <label for="useremail" class="form-label">Email address</label>
-                                <input type="email" class="form-control mb-2" id="useremail" aria-describedby="emailHelp" placeholder="example@mail.com">
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                <input type="email" class="form-control mb-2" id="useremail" placeholder="example@mail.com">
+
                             </div>
+
+                            <!-- Password -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control mb-2" id="password" placeholder="••••••">
-
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control mb-2" id="password" placeholder="••••••">
 
                             </div>
@@ -52,11 +44,11 @@ require APP_ROOT . "/views/inc/header.php";
                                 <label class="form-check-label" for="rememberMe">Remember Me</label>
                             </div>
                             <div class="text-center text-end">
-                                <button type="submit" name="signup" class="btn btn-primary">Create Account</button>
+                                <button type="submit" name="login" class="btn btn-primary">Log In</button>
                             </div>
                         </form>
                         <div class="text-center mt-3">
-                            <a href="<?= URL_ROOT; ?>/users/login">Have an account? Login</a>
+                            <a href="<?= URL_ROOT; ?>/users/signup">Create New Account?</a>
                         </div>
                     </div>
                 </div>
