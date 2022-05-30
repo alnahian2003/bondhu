@@ -30,3 +30,6 @@ define("VERSION", "1.0");
 
 // Github Repo of This Project
 define("GITHUB_REPO", "https://github.com/alnahian2003/bondhu");
+
+// Set Default Timezone
+date_default_timezone_set("Asia/Dhaka");
