@@ -3,7 +3,8 @@ class Posts extends Controller
 {
     public function __construct()
     {
-        if (!isset($_SESSION["user_id"])) {
+        // Won't let user see the posts page if they're not logged in
+        if (!isLoggedIn()) {
             redirect("users/login");
         }
     }
