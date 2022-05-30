@@ -11,8 +11,10 @@ class Post extends Database
     public function getPosts()
     {
         $this->db->query("SELECT *,
-                        posts.id as postId,
-                        users.id as userId
+                        posts.id as post_id,
+                        users.id as users_id,
+                        posts.posted_at as post_time,
+                        users.created_at as user_created
                         FROM posts
                         INNER JOIN users
                         ON posts.user_id = users.id

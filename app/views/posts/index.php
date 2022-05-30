@@ -6,6 +6,12 @@ $site_title = "Posts";
 require APP_ROOT . "/views/inc/header.php";
 ?>
 
+<style>
+    body {
+        background-color: #0d6efd10;
+    }
+</style>
+
 <!-- Posts heading section -->
 <div class="row align-items-center justify-content-between mb-2">
     <div class="col-md-6 text-start">
@@ -21,8 +27,8 @@ require APP_ROOT . "/views/inc/header.php";
 <!-- Posts Feed -->
 <div class="row">
     <!-- User Details -->
-    <div class="col-md-3 sticky-top">
-        <div class="card">
+    <div class="col-md-3">
+        <div class="card sticky-top">
             <img class="card-img-top" src="holder.js/100x180/" alt="">
             <div class="card-body">
                 <h4 class="card-title">Title</h4>
@@ -79,7 +85,7 @@ require APP_ROOT . "/views/inc/header.php";
 
         <!-- Post Feeds from others -->
         <?php foreach ($data["posts"] as $post) : ?>
-            <div class="card mb-4 border-light">
+            <div class="card mb-4 border-light p-2">
                 <!-- Post Author -->
                 <div class="d-flex align-items-center justify-content-between p-3">
                     <div class="d-flex align-items-center">
@@ -94,7 +100,7 @@ require APP_ROOT . "/views/inc/header.php";
 
                                 <p class="small">
                                     <i class="bi bi-clock"></i>
-                                    <?= date("h:i A, D m, Y", strtotime($post->posted_at)); ?>
+                                    <?= date("h:i A, D m, Y", strtotime($post->post_time)); ?>
                                 </p>
                             </div>
                         </div>
@@ -119,13 +125,23 @@ require APP_ROOT . "/views/inc/header.php";
                     </div>
                     <!-- Card feed action dropdown END -->
                 </div>
-                <img src="https://images.pexels.com/photos/7325503/pexels-photo-7325503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top img-fluid" alt="...">
+
+                <a href="#!" class="post-img px-3">
+                    <img src="<?= $post->post_img; ?>" class="card-img-top img-fluid rounded-3" alt="<?= $post->title; ?>">
+                </a>
                 <div class="card-body">
-                    <h5 class="card-title"><?= $post->title; ?></h5>
-                    <p class="card-text"><small class="text-muted"></small></p>
-                    <p class="card-text"><?= $post->body; ?></p>
+                    <!-- Post title -->
+                    <h5 class="card-title fw-bold text-dark"><?= $post->title; ?></h5>
+
+                    <!-- Post Body -->
+                    <p class="card-text text-muted"><?= $post->body; ?></p>
 
                 </div>
+
+                <!-- Read More Button -->
+                <a href="<?= URL_ROOT . "/posts/details/{$post->id}"; ?>" class="btn btn-light text-dark mx-3 my-2 small">Read More</a>
+
+
             </div>
         <?php endforeach; ?>
     </div>
