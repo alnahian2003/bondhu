@@ -9,6 +9,11 @@ class Pages extends Controller
     // Home Page
     public function index()
     {
+
+        if (isLoggedIn()) {
+            redirect("posts");
+        }
+
         $data = [
             "title" => "Welcome to Bondhu",
             "subtitle" => "Where friends get connected",

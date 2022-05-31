@@ -22,4 +22,15 @@ class Posts extends Controller
         ];
         return $this->view("posts/index", $data);
     }
+
+    public function create()
+    {
+        $data = [
+            "title" => "",
+            "post_img" => "",
+            "video_url" => "",
+            "body" => "",
+        ];
+        return $this->view("posts/create", $data);
+    }
 }
