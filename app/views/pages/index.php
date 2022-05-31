@@ -30,7 +30,7 @@ require APP_ROOT . "/views/inc/header.php";
 
                                 <label for="useremail" class="form-label">Email address<sup>*<sup></label>
 
-                                <input type="email" name="email" class="form-control mb-2 " id="useremail" aria-describedby="emailHelp" placeholder="example@mail.com" value="">
+                                <input type="email" name="email" class="form-control mb-2 " id="useremail" aria-describedby="emailHelp" placeholder="Email address or Username">
 
                                 <span class="invalid-feedback"></span>
 
@@ -40,7 +40,7 @@ require APP_ROOT . "/views/inc/header.php";
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password<sup>*<sup></label>
 
-                                <input type="password" name="password" class="form-control mb-2" id="password" placeholder="minimum 6 characters">
+                                <input type="password" name="password" class="form-control mb-2" id="password" placeholder="Password (Min. 6 Characters)">
 
                                 <span class="invalid-feedback"></span>
 

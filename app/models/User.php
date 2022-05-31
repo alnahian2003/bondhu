@@ -9,13 +9,14 @@ class User extends Database
     }
 
     // Find User By Email Address
-    public function findUserByEmail($email)
+    public function findUserByEmail($userInput)
     {
         // Make query
-        $this->db->query("SELECT * FROM users WHERE email = :email");
+        $this->db->query("SELECT * FROM users WHERE email = :email OR username = :username");
 
         // Bind value
-        $this->db->bind(":email", $email);
+        $this->db->bind(":email", $userInput);
+        $this->db->bind(":username", $userInput);
 
         // Find the single row
         $row = $this->db->single();
@@ -48,10 +49,11 @@ class User extends Database
     }
 
     // Login an User
-    public function login($email, $password)
+    public function login($userInput, $password)
     {
-        $this->db->query("SELECT * FROM users WHERE email = :email");
-        $this->db->bind(":email", $email);
+        $this->db->query("SELECT * FROM users WHERE email = :email OR username = :username");
+        $this->db->bind(":email", $userInput);
+        $this->db->bind(":username", $userInput);
         // get the single row
         $row = $this->db->single();
 

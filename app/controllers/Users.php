@@ -101,17 +101,17 @@ class Users extends Controller
             // Process the form
             // Init data
             $data = [
-                "email" => htmlspecialchars(trim($_POST["email"])),
+                "userInput" => htmlspecialchars(trim($_POST["userInput"])),
                 "password" => htmlspecialchars(trim($_POST["password"])),
 
                 // Error variables
-                "email_error" => "",
+                "userInput_error" => "",
                 "password_error" => ""
             ];
 
             // Validate Email
-            if (empty($data["email"])) {
-                $data["email_error"] = "Please enter your email!";
+            if (empty($data["userInput"])) {
+                $data["userInput_error"] = "Please enter email or username!";
             }
 
             // Validate Password
@@ -121,18 +121,18 @@ class Users extends Controller
                 $data["password_error"] = "Password must be at least 6 characters!";
             }
 
-            // Check for User Email in DB
-            if ($this->userModel->findUserByEmail($data["email"])) {
+            // Check for User Email Or Username in DB
+            if ($this->userModel->findUserByEmail($data["userInput"])) {
                 // User found
             } else {
                 // User not found, display error
-                $data["email_error"] = "Sorry, No User Found!";
+                $data["userInput_error"] = "Sorry, No User Found!";
             }
 
             // Make sure, errors are empty
-            if (empty($data["email_error"]) && empty($data["password_error"])) {
+            if (empty($data["userInput_error"]) && empty($data["password_error"])) {
                 // Check and set logged in user
-                $loggedInUser = $this->userModel->login($data["email"], $data["password"]);
+                $loggedInUser = $this->userModel->login($data["userInput"], $data["password"]);
                 if ($loggedInUser) {
 
                     // Cerate Session
@@ -151,11 +151,11 @@ class Users extends Controller
 
             //    Init data
             $data = [
-                "email" => "",
+                "userInput" => "",
                 "password" => "",
 
                 // Error variables
-                "email_error" => "",
+                "userInput_error" => "",
                 "password_error" => ""
             ];
 

@@ -11,24 +11,18 @@ require APP_ROOT . "/views/inc/header.php";
     <div class="card bg-light bg-gradient p-3">
         <div class="card-body text-dark">
             <?php flash("signup_success"); ?>
-            <h3 class="text-center">Login</h3>
+            <h3 class="text-center mb-3 display-6">Sign In</h3>
             <form action="<?php echo URL_ROOT; ?>/users/login" method="post">
 
                 <div class="mb-3">
-
-                    <label for="useremail" class="form-label">Email address<sup>*<sup></label>
-
-                    <input type="email" name="email" class="form-control mb-2 <?= !empty($data["email_error"]) ? "is-invalid" : ''; ?>" id="useremail" aria-describedby="emailHelp" placeholder="example@mail.com" value="<?= $data["email"]; ?>">
-
-                    <span class="invalid-feedback"><?= $data["email_error"]; ?></span>
+                    <input type="text" name="userInput" class="form-control mb-2 <?= !empty($data["userInput_error"]) ? "is-invalid" : ''; ?>" id="userInput" placeholder="Email address or Username" value="<?= $data["userInput"]; ?>">
+                    <span class="invalid-feedback"><?= $data["userInput_error"]; ?></span>
 
                 </div>
 
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password<sup>*<sup></label>
-
-                    <input type="password" name="password" class="form-control mb-2 <?= !empty($data["password_error"]) ? "is-invalid" : ''; ?>" id="password" placeholder="••••••">
+                    <input type="password" name="password" class="form-control mb-2 <?= !empty($data["password_error"]) ? "is-invalid" : ''; ?>" id="password" placeholder="Password (Min. 6 Characters)">
 
                     <span class="invalid-feedback"><?= $data["password_error"]; ?></span>
 
