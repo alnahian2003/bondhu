@@ -38,6 +38,7 @@ require APP_ROOT . "/views/inc/header.php";
                     <button type="submit" name="login" class="btn btn-primary d-block w-100 bg-gradient">Log In</button>
                 </div>
             </form>
+            <hr class="border">
             <div class="text-center mt-3">
                 <a href="<?= URL_ROOT; ?>/users/signup">New to Bondhu? Sign In</a>
             </div>

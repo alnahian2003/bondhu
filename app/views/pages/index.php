@@ -23,14 +23,12 @@ require APP_ROOT . "/views/inc/header.php";
             <div class="col-md-4 text-dark">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="text-center">Create an Account</h3>
+                        <h3 class="text-center display-6 mb-3">Sign In</h3>
+
                         <form action="<?php echo URL_ROOT; ?>/users/login" method="post">
 
                             <div class="mb-3">
-
-                                <label for="useremail" class="form-label">Email address<sup>*<sup></label>
-
-                                <input type="email" name="email" class="form-control mb-2 " id="useremail" aria-describedby="emailHelp" placeholder="Email address or Username">
+                                <input type="text" name="userInput" class="form-control mb-2 " id="userInput" placeholder="Email address or Username">
 
                                 <span class="invalid-feedback"></span>
 
@@ -38,8 +36,6 @@ require APP_ROOT . "/views/inc/header.php";
 
 
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password<sup>*<sup></label>
-
                                 <input type="password" name="password" class="form-control mb-2" id="password" placeholder="Password (Min. 6 Characters)">
 
                                 <span class="invalid-feedback"></span>
@@ -56,8 +52,9 @@ require APP_ROOT . "/views/inc/header.php";
                                 <button type="submit" name="login" class="btn btn-primary d-block w-100 bg-gradient">Log In</button>
                             </div>
                         </form>
+                        <hr class="border">
                         <div class="text-center mt-3">
-                            <a href="<?= URL_ROOT; ?>/users/signup">New to Bondhu? Sign In</a>
+                            <a href="<?= URL_ROOT; ?>/users/signup">New to Bondhu? Sign Up</a>
                         </div>
                     </div>
                 </div>
