@@ -52,7 +52,7 @@ require APP_ROOT . "/views/inc/header.php";
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#"> <i class="bi bi-trash fa-fw pe-2"></i>Delete post</a></li>
+                        <li><a class="dropdown-item text-danger" href="#"> <i class="bi bi-trash fa-fw pe-2"></i>Delete Post</a></li>
                     </ul>
                 <?php endif; ?>
             </div>
@@ -74,7 +74,7 @@ require APP_ROOT . "/views/inc/header.php";
             <?php if (!empty($data["post"]->post_video) && empty($data["post"]->post_video_error)) : ?>
                 <!-- Post YouTube -->
                 <div class="ratio ratio-16x9 card-img-top img-fluid my-3">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $data["post"]->post_video; ?>?rel=0&controls=1&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item rounded-3" src="https://www.youtube.com/embed/<?= $data["post"]->post_video; ?>?rel=0&controls=1&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             <?php endif; ?>
 
