@@ -151,21 +151,24 @@ require APP_ROOT . "/views/inc/header.php";
                         <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-three-dots"></i>
                         </a>
-                        <!-- Card feed action dropdown menu -->
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Save post</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-x fa-fw pe-2"></i>Unfollow <?= $post->postUser; ?> </a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-x-circle fa-fw pe-2"></i>Hide post</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-slash-circle fa-fw pe-2"></i>Block</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-flag fa-fw pe-2"></i>Report post</a></li>
-                        </ul>
+                        <?php if ($data["user"]->id == $_SESSION["user_id"]) : ?>
+                            <!-- Card feed action dropdown menu -->
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Save post</a></li>
+                                <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/read/{$post->post_id}"; ?>"> <i class="bi bi-bookmark fa-fw pe-2"></i>View Full Post</a></li>
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-x-circle fa-fw pe-2"></i>Hide post</a></li>
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-slash-circle fa-fw pe-2"></i>Block</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$post->post_id}"; ?>"> <i class="bi bi-trash fa-fw pe-2  text-danger"></i>Delete Post</a></li>
+                            </ul>
+                        <?php endif; ?>
                     </div>
                     <!-- Card feed action dropdown END -->
                 </div>
 
+                <!-- Post Body -->
                 <div class="card-body">
 
                     <?php if (!empty($post->title)) : ?>
@@ -181,7 +184,7 @@ require APP_ROOT . "/views/inc/header.php";
                     <?php if (!empty($post->post_video)) : ?>
                         <!-- Post YouTube -->
                         <div class="ratio ratio-16x9 card-img-top img-fluid my-3">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $post->post_video; ?>?rel=0&controls=1&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item rounded-3" src="https://www.youtube.com/embed/<?= $post->post_video; ?>?rel=0&controls=1&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     <?php endif; ?>
 

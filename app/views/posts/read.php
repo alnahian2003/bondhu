@@ -59,26 +59,26 @@ require APP_ROOT . "/views/inc/header.php";
             <!-- Card feed action dropdown END -->
         </div>
 
-        <?php if (!empty($data["post"]->post_img)) : ?>
-            <!-- Post Image -->
-            <img src="<?= $data["post"]->post_img; ?>" class="card-img-top img-fluid rounded-3" alt="<?= $post->post_id; ?>">
-        <?php endif; ?>
-
         <div class="card-body">
 
-            <?php if (!empty($data["post"]->title)) : ?>
+            <?php if (!empty($data["post"]->title) && empty($data["post"]->title_error)) : ?>
                 <!-- Post title -->
                 <h5 class="card-title fw-bold text-dark"><?= $data["post"]->title; ?></h5>
             <?php endif; ?>
 
-            <?php if (!empty($data["post"]->post_video)) : ?>
+            <?php if (!empty($data["post"]->post_img) && empty($data["post"]->post_img_error)) : ?>
+                <!-- Post Image -->
+                <img src="<?= $data["post"]->post_img; ?>" class="card-img-top img-fluid rounded-3" alt="<?= $data["post"]->id; ?>">
+            <?php endif; ?>
+
+            <?php if (!empty($data["post"]->post_video) && empty($data["post"]->post_video_error)) : ?>
                 <!-- Post YouTube -->
                 <div class="ratio ratio-16x9 card-img-top img-fluid my-3">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $data["post"]->post_video; ?>?rel=0&controls=1&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             <?php endif; ?>
 
-            <?php if (!empty($data["post"]->body)) : ?>
+            <?php if (!empty($data["post"]->body) && empty($data["post"]->body_error)) : ?>
                 <!-- Post Body -->
                 <p class="card-text text-muted"><?= $data["post"]->body; ?></p>
             <?php endif; ?>

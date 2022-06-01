@@ -27,7 +27,7 @@ class Post extends Database
     // Get Logged In User Informations by Id to Show them on Profile Card
     public function getUserById($userId)
     {
-        $this->db->query("SELECT name, username, profile_img, bio, created_at FROM users WHERE id = :user_id");
+        $this->db->query("SELECT id, name, username, profile_img, bio, created_at FROM users WHERE id = :user_id");
         $this->db->bind(":user_id", $userId);
 
         // Execute
