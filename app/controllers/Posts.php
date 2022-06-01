@@ -77,10 +77,10 @@ class Posts extends Controller
                 * We're only gonna accept either just a title, or a body (one of these is must).
                 *If user include any image/video link, they're gonna show up too 
             */
-            if (!empty($data["title"]) || !empty($data["body"]) || ($data["post_img"] || $data["post_video"])) {
+            if (!empty($data["title"]) || !empty($data["body"]) || $data["post_img"] || $data["post_video"]) {
                 // Validated
                 if ($this->postModel->createPost($data)) {
-                    flash("post_message", "Post Created Successfully");
+                    flash("post_message", "Post Created Successfully!");
                     redirect("posts");
                 } else {
                     flash("post_message", "Cannot Created The Post", "alert-danger");
