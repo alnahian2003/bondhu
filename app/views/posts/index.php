@@ -36,12 +36,13 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="text-center">
                     <!-- Avatar -->
                     <div class="avatar-lg mt-n5 mb-3 px-3 pt-3">
-                        <a href="#!"><img class="avatar-img rounded border border-white border-3" src="https://scontent.fdac145-1.fna.fbcdn.net/v/t39.30808-6/242073087_731008314964760_5404138908030348238_n.jpg?stp=dst-jpg_s640x640&_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_eui2=AeEOm_0e4g1x6Rpx26oQSKQlATCnuWcS2dsBMKe5ZxLZ2y2QiZaxSsZ-iZakYf1vPz7LDhEcnrhSp1HatOg3c3kw&_nc_ohc=yZUHouOJFg8AX-xE8eM&_nc_ht=scontent.fdac145-1.fna&oh=00_AT8t5qQnP17Ttfc1yNu5pOEZZdt3_Liofbb9fkVH5kyCNw&oe=629910F5" alt=""></a>
+                        <a href="#!"><img class="avatar-img rounded border border-white border-3" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>"></a>
                     </div>
                     <!-- Info -->
-                    <h5 class="mb-0"> <a href="#!">Al Nahian </a> </h5>
-                    <small>Web Developer at ZovoTeam</small>
-                    <p class="mt-3">I'd love to change the world, but they won't give me the source code.</p>
+                    <h5 class="mb-0"> <a href="#!"><?= $data["user"]->name; ?></a> </h5>
+                    <small>@<?= $data["user"]->username; ?></small>
+                    <!-- <small>Web Developer at ZovoTeam</small> -->
+                    <p class="mt-3"><?= $data["user"]->bio; ?></p>
 
                     <!-- User stat START -->
                     <div class="hstack gap-2 gap-xl-3 justify-content-center">
@@ -66,13 +67,12 @@ require APP_ROOT . "/views/inc/header.php";
                         </div>
                     </div>
                     <!-- User stat END -->
+                    <small class="text-muted">Joined on <?= date("d M, Y", strtotime($data["user"]->created_at)); ?></small>
                 </div>
             </div>
             <!-- Card body END -->
             <!-- Card footer -->
-            <div class="card-footer bg-primary text-center py-2">
-                <a class="btn btn-primary btn-sm" href="my-profile.html">View Profile </a>
-            </div>
+            <a class="card-footer btn btn-primary bg-primary bg-gradient text-white fw-bold text-center py-2 btn-sm w-100" href="my-profile.html">View Profile </a>
         </div>
     </div>
 
@@ -83,7 +83,7 @@ require APP_ROOT . "/views/inc/header.php";
             <div class="d-flex mb-3">
                 <!-- Avatar -->
                 <div class="avatar avatar-xs me-2">
-                    <a href="<?= URL_ROOT; ?>/users/profile"> <img class="avatar-img rounded-circle" src="https://scontent.fdac145-1.fna.fbcdn.net/v/t39.30808-6/242073087_731008314964760_5404138908030348238_n.jpg?stp=dst-jpg_s640x640&_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_eui2=AeEOm_0e4g1x6Rpx26oQSKQlATCnuWcS2dsBMKe5ZxLZ2y2QiZaxSsZ-iZakYf1vPz7LDhEcnrhSp1HatOg3c3kw&_nc_ohc=yZUHouOJFg8AX-xE8eM&_nc_ht=scontent.fdac145-1.fna&oh=00_AT8t5qQnP17Ttfc1yNu5pOEZZdt3_Liofbb9fkVH5kyCNw&oe=629910F5" alt=""> </a>
+                    <a href="<?= URL_ROOT; ?>/users/profile"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt=""> </a>
                 </div>
                 <!-- Post input -->
                 <form class="w-100">
@@ -121,7 +121,7 @@ require APP_ROOT . "/views/inc/header.php";
         <?php foreach ($data["posts"] as $post) : ?>
             <div class="card mb-4 border-light p-2">
                 <!-- Post Author -->
-                <div class="d-flex align-items-center justify-content-between p-3 pb-0">
+                <div class="d-flex align-items-center justify-content-between px-3">
                     <div class="d-flex align-items-center">
                         <!-- Avatar -->
                         <div class="avatar avatar-story me-2">
@@ -183,13 +183,13 @@ require APP_ROOT . "/views/inc/header.php";
 
                     <?php if (!empty($post->body)) : ?>
                         <!-- Post Body -->
-                        <p class="card-text text-muted"><?= $post->body; ?></p>
+                        <p class="card-text text-muted"><?= substr($post->body, 0, 297) . "..."; ?></p>
                     <?php endif; ?>
                 </div>
 
-                <?php if (!empty($post->body) && (strlen($post->body) > 160)) : ?>
+                <?php if (!empty($post->body) && (strlen($post->body) > 300)) : ?>
                     <!-- Read More Button -->
-                    <a href="<?= URL_ROOT . "/posts/details/{$post->id}"; ?>" class="btn btn-light text-dark mx-3 my-2 small">Read More</a>
+                    <a href="<?= URL_ROOT . "/posts/read/{$post->post_id}"; ?>" class="btn btn-light text-dark mx-3 my-2 small">View Full Post</a>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
@@ -199,7 +199,7 @@ require APP_ROOT . "/views/inc/header.php";
     <div class="col-md-3">
         <div class="card">
             <!-- Card header START -->
-            <div class="card-header px-3 py-3 border-0">
+            <div class="card-header p-3 border-0">
                 <h5 class="h5 card-title mb-0">People You May Know</h5>
             </div>
             <!-- Card header END -->
@@ -243,8 +243,6 @@ require APP_ROOT . "/views/inc/header.php";
             </div>
             <!-- Card body END -->
         </div>
-
-        <pre><?php var_dump($post); ?></pre>
     </div>
 </div>
 <?php

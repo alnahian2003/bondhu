@@ -16,9 +16,11 @@ class Posts extends Controller
     {
         // Get Posts
         $posts = $this->postModel->getPosts();
+        $currentUser = $this->postModel->getUserById($_SESSION["user_id"]);
 
         $data = [
             "posts" => $posts,
+            "user" => $currentUser,
         ];
         return $this->view("posts/index", $data);
     }
@@ -98,5 +100,18 @@ class Posts extends Controller
             ];
             return $this->view("posts/create", $data);
         }
+    }
+
+    // Read More functionality for long posts
+    public function read($postId)
+    {
+        $post = $this->postModel->getPostById($postId);
+        $postUser = $this->postModel->getPostUserById($post->user_id);
+        // Load the view
+        $data = [
+            "post" => $post,
+            "user" => $postUser,
+        ];
+        return $this->view("posts/read", $data);
     }
 }

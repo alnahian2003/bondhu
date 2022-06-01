@@ -10,11 +10,10 @@ class Post extends Database
 
     public function getPosts()
     {
-        $this->db->query("SELECT *,
+        $this->db->query("SELECT name, profile_img, user_id, title, body, post_img, post_video, posted_at,
                         posts.id as post_id,
                         users.id as user_id,
-                        posts.posted_at as post_time,
-                        users.created_at as user_created
+                        posts.posted_at as post_time
                         FROM posts
                         INNER JOIN users
                         ON posts.user_id = users.id
@@ -23,6 +22,20 @@ class Post extends Database
         $posts = $this->db->resultSet();
 
         return $posts;
+    }
+
+    // Get Logged In User Informations by Id to Show them on Profile Card
+    public function getUserById($userId)
+    {
+        $this->db->query("SELECT name, username, profile_img, bio, created_at FROM users WHERE id = :user_id");
+        $this->db->bind(":user_id", $userId);
+
+        // Execute
+        if ($this->db->execute()) {
+            return $this->db->single();
+        } else {
+            return die("Something is wrong");
+        }
     }
 
     public function createPost($data)
@@ -42,6 +55,32 @@ class Post extends Database
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function getPostById($postId)
+    {
+        $this->db->query("SELECT * FROM posts WHERE id = :id");
+        $this->db->bind(":id", $postId);
+
+        // Execute
+        if ($this->db->execute()) {
+            return $this->db->single();
+        } else {
+            return die("Something is wrong");
+        }
+    }
+
+    public function getPostUserById($userId)
+    {
+        $this->db->query("SELECT id, name, profile_img FROM users WHERE id = :id");
+        $this->db->bind(":id", $userId);
+
+        // Execute
+        if ($this->db->execute()) {
+            return $this->db->single();
+        } else {
+            return die("Something is wrong");
         }
     }
 }
