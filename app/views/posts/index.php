@@ -42,28 +42,6 @@ require APP_ROOT . "/views/inc/header.php";
                     <!-- <small>Web Developer at ZovoTeam</small> -->
                     <p class="mt-3"><?= $data["user"]->bio; ?></p>
 
-                    <!-- User stat START -->
-                    <div class="hstack gap-2 gap-xl-3 justify-content-center">
-                        <!-- User stat item -->
-                        <div>
-                            <h6 class="mb-0">256</h6>
-                            <small>Post</small>
-                        </div>
-                        <!-- Divider -->
-                        <div class="vr"></div>
-                        <!-- User stat item -->
-                        <div>
-                            <h6 class="mb-0">2.5K</h6>
-                            <small>Followers</small>
-                        </div>
-                        <!-- Divider -->
-                        <div class="vr"></div>
-                        <!-- User stat item -->
-                        <div>
-                            <h6 class="mb-0">365</h6>
-                            <small>Following</small>
-                        </div>
-                    </div>
                     <!-- User stat END -->
                     <small class="text-muted">Joined on <?= date("d M, Y", strtotime($data["user"]->created_at)); ?></small>
                 </div>
@@ -154,14 +132,12 @@ require APP_ROOT . "/views/inc/header.php";
                         <?php if ($data["user"]->id == $_SESSION["user_id"]) : ?>
                             <!-- Card feed action dropdown menu -->
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
-                                <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Save post</a></li>
-                                <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/read/{$post->post_id}"; ?>"> <i class="bi bi-bookmark fa-fw pe-2"></i>View Full Post</a></li>
-                                <li><a class="dropdown-item" href="#"> <i class="bi bi-x-circle fa-fw pe-2"></i>Hide post</a></li>
-                                <li><a class="dropdown-item" href="#"> <i class="bi bi-slash-circle fa-fw pe-2"></i>Block</a></li>
+                                <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/read/{$post->post_id}"; ?>"> <i class="bi bi-eye pe-2"></i>View Full Post</a></li>
+                                <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/edit/{$post->post_id}"; ?>"> <i class="bi bi-pencil-square pe-2"></i>Edit Post</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$post->post_id}"; ?>"> <i class="bi bi-trash fa-fw pe-2  text-danger"></i>Delete Post</a></li>
+                                <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$post->post_id}"; ?>"> <i class="bi bi-trash pe-2  text-danger"></i>Delete Post</a></li>
                             </ul>
                         <?php endif; ?>
                     </div>

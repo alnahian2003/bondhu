@@ -52,7 +52,7 @@ require APP_ROOT . "/views/inc/header.php";
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item text-danger" href="#"> <i class="bi bi-trash fa-fw pe-2"></i>Delete Post</a></li>
+                        <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "posts/delete/{$data["post"]->id}" ?>"> <i class="bi bi-trash fa-fw pe-2"></i>Delete Post</a></li>
                     </ul>
                 <?php endif; ?>
             </div>
