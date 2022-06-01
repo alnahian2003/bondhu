@@ -26,30 +26,6 @@
         </div>
 
         <?php if (isset($_SESSION["user_id"])) : ?>
-            <!-- Chat Dropdown -->
-            <div class="dropdown mx-2">
-
-                <!-- Dropdown button -->
-                <a href="#" class="d-block btn-lg link-secondary text-decoration-none dropdown-toggle" id="chatDropDown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                    <i class="bi bi-chat-dots h3 text-muted"></i>
-                </a>
-                <!-- End: Dropdown Button -->
-
-                <!-- Dropdown menu -->
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end" aria-labelledby="chatDropDown">
-                    <div class="p-3" style="width: 18rem;">
-                        <h4 class="h4">Messages</h4>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- End: Dropdown menu -->
-            </div>
             <!-- Profile Dropdown -->
             <div class="dropdown text-end">
                 <!-- Dropdown button -->
