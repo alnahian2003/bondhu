@@ -109,13 +109,18 @@ class Posts extends Controller
     // Read More functionality for long posts
     public function read($postId)
     {
+        // If post found, then show the page with content. otherwise redirect to homepage
         $post = $this->postModel->getPostById($postId);
-        $postUser = $this->postModel->getPostUserById($post->user_id);
-        // Load the view
-        $data = [
-            "post" => $post,
-            "user" => $postUser,
-        ];
-        return $this->view("posts/read", $data);
+        if ($post == true) {
+            $postUser = $this->postModel->getPostUserById($post->user_id);
+            // Load the view
+            $data = [
+                "post" => $post,
+                "user" => $postUser,
+            ];
+            return $this->view("posts/read", $data);
+        } else {
+            redirect("posts");
+        }
     }
 }
