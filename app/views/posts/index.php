@@ -34,7 +34,7 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="text-center">
                     <!-- Avatar -->
                     <div class="avatar-lg mt-n5 mb-3 px-3 pt-3">
-                        <a href="#!"><img class="avatar-img rounded border border-white border-3" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>"></a>
+                        <img class="avatar-img rounded border border-white border-3" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>">
                     </div>
                     <!-- Info -->
                     <h5 class="mb-0"> <a href="<?= URL_ROOT; ?>/users/profile"><?= $data["user"]->name; ?></a> </h5>
@@ -168,12 +168,43 @@ require APP_ROOT . "/views/inc/header.php";
                         <!-- Post Body -->
                         <p class="card-text text-muted"><?= substr($post->body, 0, 297) . "..."; ?></p>
                     <?php endif; ?>
+
+                    <?php if (!empty($post->body) && (strlen($post->body) > 300)) : ?>
+                        <!-- Read More Button -->
+                        <a href="<?= URL_ROOT . "/posts/read/{$post->post_id}"; ?>" class="btn btn-light text-dark mb-2 w-100">View Full Post</a>
+                    <?php endif; ?>
+
+                    <!-- Like, Comment, Share Panel -->
+                    <ul class="nav nav-pills nav-pills-light nav-fill nav-stack small border-top border-bottom py-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-muted mb-0" href="#!"> <i class="bi bi-hand-thumbs-up pe-1"></i>Like</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-muted mb-0" href="#!"> <i class="bi bi-chat-square-text pe-1"></i>Comment</a>
+                        </li>
+
+                        <!-- Card share action menu START -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link text-muted mb-0" id="cardShareAction4" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-reply-fill flip-horizontal ps-1"></i>Share
+                            </a>
+                            <!-- Card share action dropdown menu -->
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardShareAction4">
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-envelope fa-fw pe-2"></i>Send via Direct Message</a></li>
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark-check fa-fw pe-2"></i>Bookmark </a></li>
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-link fa-fw pe-2"></i>Copy link to post</a></li>
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-share fa-fw pe-2"></i>Share post via …</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Share to News Feed</a></li>
+                            </ul>
+                        </li>
+                        <!-- Card share action menu END -->
+                    </ul>
                 </div>
 
-                <?php if (!empty($post->body) && (strlen($post->body) > 300)) : ?>
-                    <!-- Read More Button -->
-                    <a href="<?= URL_ROOT . "/posts/read/{$post->post_id}"; ?>" class="btn btn-light text-dark mx-3 my-2 small">View Full Post</a>
-                <?php endif; ?>
             </div>
         <?php endforeach; ?>
     </div>

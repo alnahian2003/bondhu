@@ -24,7 +24,7 @@ require APP_ROOT . "/views/inc/header.php";
             <div class="d-flex mb-3 gap-2">
                 <!-- Avatar -->
                 <div class="avatar avatar-xs me-2">
-                    <a href="<?= URL_ROOT; ?>/users/profile"> <img class="avatar-img rounded-circle" src="https://scontent.fdac145-1.fna.fbcdn.net/v/t39.30808-6/242073087_731008314964760_5404138908030348238_n.jpg?stp=dst-jpg_s640x640&_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_eui2=AeEOm_0e4g1x6Rpx26oQSKQlATCnuWcS2dsBMKe5ZxLZ2y2QiZaxSsZ-iZakYf1vPz7LDhEcnrhSp1HatOg3c3kw&_nc_ohc=yZUHouOJFg8AX-xE8eM&_nc_ht=scontent.fdac145-1.fna&oh=00_AT8t5qQnP17Ttfc1yNu5pOEZZdt3_Liofbb9fkVH5kyCNw&oe=629910F5" alt=""> </a>
+                    <a href="<?= URL_ROOT; ?>/users/profile"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->name; ?>"> </a>
                 </div>
                 <!-- Post input -->
                 <form class="w-100" id="createPost" method="POST" action="<?= URL_ROOT; ?>/posts/create">

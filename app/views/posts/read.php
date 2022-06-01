@@ -13,8 +13,8 @@ require APP_ROOT . "/views/inc/header.php";
 </style>
 
 <div class="col-sm-8 card card-body mx-auto">
-    <!-- Post Feeds from others -->
-    <div class="mb-4 border-light p-2">
+    <!-- Full Post -->
+    <div class="border-light p-2">
         <!-- Post Author -->
         <div class="d-flex align-items-center justify-content-between px-3">
             <div class="d-flex align-items-center">

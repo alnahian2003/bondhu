@@ -24,35 +24,28 @@
                 <?php endif; ?>
             </div>
         </div>
-
-        <?php if (isset($_SESSION["user_id"])) : ?>
+        <?php if (isLoggedIn()) : ?>
             <!-- Profile Dropdown -->
             <div class="dropdown text-end">
                 <!-- Dropdown button -->
                 <a href="#" class="d-block link-secondary btn-lg text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle h3 text-muted"></i>
+                    <img style="height: 2.5rem; width: 2.5rem; object-fit:cover;" class="rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>">
                 </a>
                 <!-- End: Dropdown button -->
 
                 <!-- Dropdown Menu -->
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="profileDropdown">
                     <li>
-                        <h6 class="dropdown-header">Dropdown header</h6>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="<?= URL_ROOT; ?>/pages/profile">
+                        <a class="dropdown-item" href="<?= URL_ROOT . "/users/profile/{$data["user"]->id}"; ?>">
                             <i class="bi bi-person m-1"></i> Profile</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<?= URL_ROOT . "/users/settings/{$data["user"]->id}"; ?>">
                             <i class="bi bi-gear m-1"></i> Settings
                         </a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <h6 class="dropdown-header">Dropdown header</h6>
                     </li>
                     <li><a class="dropdown-item" href="<?= URL_ROOT; ?>/users/logout">
                             <i class="bi bi-box-arrow-right m-1"></i> Sign out
@@ -64,3 +57,5 @@
         <?php endif; ?>
     </div>
 </nav>
+
+<!-- TODO: Fix Navbar Profile Issue -->

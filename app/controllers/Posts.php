@@ -27,10 +27,12 @@ class Posts extends Controller
 
     public function create()
     {
+        $currentUser = $this->postModel->getUserById($_SESSION["user_id"]);
         // Check for POST
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize & Process Create Post Form
             // $_POST = htmlspecialchars(trim(INPUT_POST));
+
 
             $data = [
                 "user_id" => $_SESSION["user_id"],
@@ -38,6 +40,7 @@ class Posts extends Controller
                 "body" => htmlspecialchars(trim($_POST["body"])),
                 "post_img" => htmlspecialchars(trim($_POST["post_img"])),
                 "post_video" => htmlspecialchars(trim($_POST["post_video"])),
+                "user" => $currentUser,
 
                 // Error variables
                 "title_error" => "",
@@ -97,6 +100,7 @@ class Posts extends Controller
                 "post_img" => "",
                 "post_video" => "",
                 "body" => "",
+                "user" => $currentUser,
             ];
             return $this->view("posts/create", $data);
         }
