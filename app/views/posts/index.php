@@ -27,7 +27,7 @@ require APP_ROOT . "/views/inc/header.php";
 <!-- Posts Feed -->
 <div class="row">
     <!-- User Details -->
-    <div class="col-md-3">
+    <div class="col-md-3 d-none d-sm-block d-md-none d-lg-block">
         <div class="card overflow-hidden">
             <!-- Cover image -->
             <div class="h-50px" style="background-image:url(assets/images/bg/01.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
@@ -77,7 +77,7 @@ require APP_ROOT . "/views/inc/header.php";
     </div>
 
     <div class="col-md-6">
-
+        <?php flash("post_message"); ?>
         <!-- Create Post -->
         <div class="card card-body mb-3">
             <div class="d-flex mb-3">
@@ -121,7 +121,7 @@ require APP_ROOT . "/views/inc/header.php";
         <?php foreach ($data["posts"] as $post) : ?>
             <div class="card mb-4 border-light p-2">
                 <!-- Post Author -->
-                <div class="d-flex align-items-center justify-content-between p-3">
+                <div class="d-flex align-items-center justify-content-between p-3 pb-0">
                     <div class="d-flex align-items-center">
                         <!-- Avatar -->
                         <div class="avatar avatar-story me-2">
@@ -130,7 +130,9 @@ require APP_ROOT . "/views/inc/header.php";
                         <!-- Info -->
                         <div>
                             <div class="flex flex-column align-items-center pt-2">
-                                <h6 class="card-title mb-0"> <a href="<?= URL_ROOT . "/profile/$post->user_id" ?>"><?= $post->name; ?></a></h6>
+                                <a href="<?= URL_ROOT . "/profile/$post->user_id" ?>">
+                                    <h6 class="card-title mb-0"><?= $post->name; ?></h6>
+                                </a>
 
                                 <p class="small">
                                     <i class="bi bi-clock"></i>
@@ -148,7 +150,7 @@ require APP_ROOT . "/views/inc/header.php";
                         <!-- Card feed action dropdown menu -->
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
                             <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Save post</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-x fa-fw pe-2"></i>Unfollow lori ferguson </a></li>
+                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-x fa-fw pe-2"></i>Unfollow <?= $post->postUser; ?> </a></li>
                             <li><a class="dropdown-item" href="#"> <i class="bi bi-x-circle fa-fw pe-2"></i>Hide post</a></li>
                             <li><a class="dropdown-item" href="#"> <i class="bi bi-slash-circle fa-fw pe-2"></i>Block</a></li>
                             <li>
@@ -160,22 +162,35 @@ require APP_ROOT . "/views/inc/header.php";
                     <!-- Card feed action dropdown END -->
                 </div>
 
-                <a href="#!" class="post-img px-3">
+                <?php if (!empty($post->post_img)) : ?>
+                    <!-- Post Image -->
                     <img src="<?= $post->post_img; ?>" class="card-img-top img-fluid rounded-3" alt="<?= $post->title; ?>">
-                </a>
+                <?php endif; ?>
+
                 <div class="card-body">
-                    <!-- Post title -->
-                    <h5 class="card-title fw-bold text-dark"><?= $post->title; ?></h5>
 
-                    <!-- Post Body -->
-                    <p class="card-text text-muted"><?= $post->body; ?></p>
+                    <?php if (!empty($post->title)) : ?>
+                        <!-- Post title -->
+                        <h5 class="card-title fw-bold text-dark"><?= $post->title; ?></h5>
+                    <?php endif; ?>
 
+                    <?php if (!empty($post->post_video)) : ?>
+                        <!-- Post YouTube -->
+                        <div class="ratio ratio-16x9 card-img-top img-fluid my-3">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $post->post_video; ?>?rel=0&controls=1&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($post->body)) : ?>
+                        <!-- Post Body -->
+                        <p class="card-text text-muted"><?= $post->body; ?></p>
+                    <?php endif; ?>
                 </div>
 
-                <!-- Read More Button -->
-                <a href="<?= URL_ROOT . "/posts/details/{$post->id}"; ?>" class="btn btn-light text-dark mx-3 my-2 small">Read More</a>
-
-
+                <?php if (!empty($post->body) && (strlen($post->body) > 160)) : ?>
+                    <!-- Read More Button -->
+                    <a href="<?= URL_ROOT . "/posts/details/{$post->id}"; ?>" class="btn btn-light text-dark mx-3 my-2 small">Read More</a>
+                <?php endif; ?>
             </div>
         <?php endforeach; ?>
     </div>
@@ -228,6 +243,8 @@ require APP_ROOT . "/views/inc/header.php";
             </div>
             <!-- Card body END -->
         </div>
+
+        <pre><?php var_dump($post); ?></pre>
     </div>
 </div>
 <?php
