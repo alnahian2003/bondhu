@@ -42,11 +42,11 @@
                 <!-- Dropdown Menu -->
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="profileDropdown">
                     <li>
-                        <a class="dropdown-item" href="<?= URL_ROOT . "/users/profile/{$data["user"]->id}"; ?>">
+                        <a class="dropdown-item" href="<?= URL_ROOT . "/profile"; ?>">
                             <i class="bi bi-person m-1"></i> Profile</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="<?= URL_ROOT . "/users/settings/{$data["user"]->id}"; ?>">
+                        <a class="dropdown-item" href="<?= URL_ROOT . "/profile/settings"; ?>">
                             <i class="bi bi-gear m-1"></i> Settings
                         </a>
                     </li>
