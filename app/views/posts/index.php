@@ -59,7 +59,7 @@ require APP_ROOT . "/views/inc/header.php";
             <div class="d-flex mb-3">
                 <!-- Avatar -->
                 <div class="avatar avatar-xs me-2">
-                    <a href="<?= URL_ROOT; ?>/users/profile"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>"> </a>
+                    <a href="<?= URL_ROOT; ?>/profile"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>"> </a>
                 </div>
                 <!-- Post input -->
                 <form class="w-100" action="<?= URL_ROOT; ?>/posts/create" method="POST" id="post">
