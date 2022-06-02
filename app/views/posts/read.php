@@ -46,7 +46,7 @@ require APP_ROOT . "/views/inc/header.php";
             <?php if ($data["postUser"]->id == $_SESSION["user_id"]) : ?>
                 <!-- Card feed action dropdown menu -->
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
-                    <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square pe-2"></i>Edit post</a></li>
+                    <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/edit/{$data["post"]->id}" ?>"> <i class="bi bi-pencil-square pe-2"></i>Edit post</a></li>
                     <hr class="dropdown-divider">
                     </li>
                     <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "posts/delete/{$data["post"]->id}" ?>"> <i class="bi bi-trash fa-fw pe-2"></i>Delete Post</a></li>

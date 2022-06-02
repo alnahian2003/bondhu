@@ -9,16 +9,17 @@ class Profile extends Controller
     }
 
     // Home Page
-    public function index()
+    public function index($userId = null)
     {
+        $userId = $userId ?? $_SESSION['user_id'];
 
-        if (!isLoggedIn()) {
+        if (!isLoggedIn() || !isset($userId)) {
             /**
              * If the user profile privacy is set to public, then anyone can view
              */
             redirect("pages/index");
         } else {
-            $userProfile = $this->profileModel->getUserProfile($_SESSION["user_id"]);
+            $userProfile = $this->profileModel->getUserProfile($userId);
             $posts = $this->profilePostModel->getPostsByUser($userProfile->id);
             $data = [
                 "user" => $userProfile,

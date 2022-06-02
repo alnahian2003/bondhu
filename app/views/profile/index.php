@@ -23,7 +23,7 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="h-200px rounded-top" style="background-image:url(https://social.webestica.com/assets/images/bg/05.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
                 <!-- Card body START -->
                 <div class="card-body py-0">
-                    <div class="d-sm-flex align-items-start text-center text-sm-start">
+                    <div class="d-sm-flex align-items-center text-center text-sm-start">
                         <div>
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-3">
@@ -32,33 +32,27 @@ require APP_ROOT . "/views/inc/header.php";
                         </div>
                         <div class="ms-sm-4 mt-sm-3">
                             <!-- Info -->
-                            <h1 class="mb-0 h5"><?= $data["user"]->name; ?><i class="bi bi-patch-check-fill text-success small"></i></h1>
+                            <h1 class="mb-0 h3"><?= $data["user"]->name; ?>
+                                <?php if ($data["user"]->is_verified == true) : ?>
+                                    <i class="bi bi-patch-check-fill text-success small" title="Verified ✔"></i>
+                                <?php endif; ?>
+                            </h1>
                         </div>
                         <!-- Button -->
                         <div class="d-flex mt-3 justify-content-center ms-sm-auto">
                             <a class="btn btn-primary me-2" href="<?= URL_ROOT; ?>/profile/edit" type="button"> <i class="bi bi-pencil-square pe-1"></i> Edit profile </a>
-                            <div class="dropdown">
-                                <!-- Card share action menu -->
-                                <button class="icon-md btn btn-light" type="button" id="profileAction2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots"></i>
-                                </button>
-                                <!-- Card share action dropdown menu -->
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileAction2">
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Share profile in a message</a></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-file-earmark-pdf fa-fw pe-2"></i>Save your profile to PDF</a></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>Lock profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>Profile settings</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <!-- List profile -->
                     <ul class="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0">
-                        <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> ZovoTeam, ZovoZip</li>
-                        <li class="list-inline-item"><i class="bi bi-geo-alt me-1"></i> Dhaka, Bangladesh</li>
+                        <?php if (!empty($data["user"]->company_name)) : ?>
+                            <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> <?= $data["user"]->company_name; ?></li>
+                        <?php endif; ?>
+
+                        <?php if (!empty($data["user"]->company_name)) : ?>
+                            <li class="list-inline-item"><i class="bi bi-geo-alt me-1"></i> <?= $data["user"]->location; ?></li>
+                        <?php endif; ?>
+
                         <li class="list-inline-item"><i class="bi bi-calendar2-plus me-1"></i> Joined on <?= date("M d, Y", strtotime($data["user"]->created_at)); ?></li>
                     </ul>
                 </div>
@@ -99,9 +93,17 @@ require APP_ROOT . "/views/inc/header.php";
                             <p><?= (isset($data["user"]->bio) && !empty($data["user"]->bio)) ? $data["user"]->bio : "";  ?></p>
                             <!-- Date time -->
                             <ul class="list-unstyled mt-3 mb-0">
-                                <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> October 20, 1990 </strong> </li>
-                                <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Single </strong> </li>
-                                <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong> webestica@gmail.com </strong> </li>
+                                <?php if ((isset($data["user"]->birthdate) && !empty($data["user"]->birthdate))) : ?>
+                                    <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> <?= date("F, Y", strtotime($data["user"]->birthdate)) ?> </strong></li>
+                                <?php endif; ?>
+
+                                <?php if ((isset($data["user"]->relationship) && !empty($data["user"]->relationship))) : ?>
+                                    <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> <?= ucwords($data["user"]->relationship); ?> </strong></li>
+                                <?php endif; ?>
+
+                                <?php if ((isset($data["user"]->email) && !empty($data["user"]->email))) : ?>
+                                    <li class="mb-2"> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong> <?= $data["user"]->email; ?> </strong></li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                         <!-- Card body END -->
@@ -121,7 +123,7 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
-                        <a href="<?= URL_ROOT; ?>/users/profile"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>"> </a>
+                        <a href="<?= URL_ROOT . "/users/profile/{$data["user"]->id}"; ?>"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>"> </a>
                     </div>
                     <!-- Post input -->
                     <form class="w-100" action="<?= URL_ROOT; ?>/posts/create" method="POST" id="post">
@@ -188,18 +190,18 @@ require APP_ROOT . "/views/inc/header.php";
 
                         <!-- Card feed action dropdown START -->
                         <div class="dropdown">
-                            <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots"></i>
-                            </a>
                             <?php if ($data["user"]->id == $_SESSION["user_id"]) : ?>
+                                <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots"></i>
+                                </a>
                                 <!-- Card feed action dropdown menu -->
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
-                                    <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/read/{$post->post_id}"; ?>"> <i class="bi bi-eye pe-2"></i>View Full Post</a></li>
-                                    <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/edit/{$post->post_id}"; ?>"> <i class="bi bi-pencil-square pe-2"></i>Edit Post</a></li>
+                                    <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/read/{$post->id}"; ?>"> <i class="bi bi-eye pe-2"></i>View Full Post</a></li>
+                                    <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/edit/{$post->id}"; ?>"> <i class="bi bi-pencil-square pe-2"></i>Edit Post</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$post->post_id}"; ?>"> <i class="bi bi-trash pe-2  text-danger"></i>Delete Post</a></li>
+                                    <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$post->id}"; ?>"> <i class="bi bi-trash pe-2  text-danger"></i>Delete Post</a></li>
                                 </ul>
                             <?php endif; ?>
                         </div>
