@@ -4,6 +4,11 @@ class Users extends Controller
     public function __construct()
     {
         $this->userModel = $this->model("User");
+
+        // Prevent a logged in user to view the signin/up pages
+        if (isLoggedIn()) {
+            redirect("posts");
+        }
     }
 
     public function signup()
