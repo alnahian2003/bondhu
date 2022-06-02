@@ -11,7 +11,9 @@ require APP_ROOT . "/views/inc/header.php";
         background-color: #f0f2f5;
     }
 </style>
-
+<pre><?= print_r($data["post"]) ?></pre>
+<pre><?= print_r($data["user"]) ?></pre>
+<pre><?= print_r($data["postUser"]) ?></pre>
 <div class="col-sm-8 card card-body mx-auto">
     <!-- Full Post -->
     <!-- Post Author -->
@@ -19,13 +21,13 @@ require APP_ROOT . "/views/inc/header.php";
         <div class="d-flex align-items-center">
             <!-- Avatar -->
             <div class="avatar avatar-story me-2">
-                <a href="<?= URL_ROOT . "/profile/" . $data["user"]->user_id; ?>"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->name; ?>"></a>
+                <a href="<?= URL_ROOT . "/profile/" . $data["postUser"]->id; ?>"> <img class="avatar-img rounded-circle" src="<?= $data["postUser"]->profile_img; ?>" alt="<?= $data["postUser"]->name; ?>"></a>
             </div>
             <!-- Info -->
             <div>
                 <div class="flex flex-column align-items-center pt-2">
-                    <a href="<?= URL_ROOT . "/profile/" . $data["user"]->user_id; ?>">
-                        <h6 class="card-title mb-0"><?= $data["user"]->name; ?></h6>
+                    <a href="<?= URL_ROOT . "/profile/" . $data["postUser"]->id; ?>">
+                        <h6 class="card-title mb-0"><?= $data["postUser"]->name; ?></h6>
                     </a>
 
                     <p class="small">
@@ -41,15 +43,11 @@ require APP_ROOT . "/views/inc/header.php";
             <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-three-dots"></i>
             </a>
-            <?php if ($data["user"]->id == $_SESSION["user_id"]) : ?>
+            <?php if ($data["postUser"]->id == $_SESSION["user_id"]) : ?>
                 <!-- Card feed action dropdown menu -->
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
                     <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square pe-2"></i>Edit post</a></li>
-                    <li><a class="dropdown-item" href="#"> <i class="bi bi-person-x fa-fw pe-2"></i>Unfollow <?= $data["user"]->name; ?> </a></li>
-                    <li><a class="dropdown-item" href="#"> <i class="bi bi-x-circle fa-fw pe-2"></i>Hide post</a></li>
-                    <li><a class="dropdown-item" href="#"> <i class="bi bi-slash-circle fa-fw pe-2"></i>Block</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
+                    <hr class="dropdown-divider">
                     </li>
                     <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "posts/delete/{$data["post"]->id}" ?>"> <i class="bi bi-trash fa-fw pe-2"></i>Delete Post</a></li>
                 </ul>

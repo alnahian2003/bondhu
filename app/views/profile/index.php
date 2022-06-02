@@ -226,9 +226,11 @@ require APP_ROOT . "/views/inc/header.php";
                             </div>
                         <?php endif; ?>
 
-                        <?php if (!empty($post->body)) : ?>
+                        <?php if (!empty($post->body) && (strlen($post->body) > 300)) : ?>
                             <!-- Post Body -->
-                            <p class="card-text text-muted"><?= substr($post->body, 0, 297) . "..."; ?></p>
+                            <p class="card-text text-muted py-2"><?= substr($post->body, 0, 297) . "..."; ?></p>
+                        <?php else : ?>
+                            <p class="card-text text-muted py-2"><?= $post->body; ?></p>
                         <?php endif; ?>
 
                         <?php if (!empty($post->body) && (strlen($post->body) > 300)) : ?>

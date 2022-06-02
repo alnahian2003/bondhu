@@ -122,10 +122,12 @@ class Posts extends Controller
         $post = $this->postModel->getPostById($postId);
         if ($post == true) {
             $currentUser = $this->postModel->getUserById($_SESSION["user_id"]);
+            $postUser = $this->postModel->getPostUserById($post->user_id);
             // Load the view
             $data = [
                 "post" => $post,
                 "user" => $currentUser,
+                "postUser" => $postUser,
             ];
             return $this->view("posts/read", $data);
         } else {
