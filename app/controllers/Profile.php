@@ -19,7 +19,7 @@ class Profile extends Controller
             redirect("pages/index");
         } else {
             $userProfile = $this->profileModel->getUserProfile($_SESSION["user_id"]);
-            $posts = $this->profilePostModel->getPosts();
+            $posts = $this->profilePostModel->getPostsByUser($userProfile->id);
             $data = [
                 "user" => $userProfile,
                 "posts" => $posts,

@@ -169,18 +169,18 @@ require APP_ROOT . "/views/inc/header.php";
                         <div class="d-flex align-items-center">
                             <!-- Avatar -->
                             <div class="avatar avatar-story me-2">
-                                <a href="<?= URL_ROOT . "/profile/$post->user_id" ?>"> <img class="avatar-img rounded-circle" src="<?= $post->profile_img; ?>" alt="<?= $post->name; ?>"> </a>
+                                <a href="<?= URL_ROOT . "/profile/{$data['user']->id}" ?>"> <img class="avatar-img rounded-circle" src="<?= $data['user']->profile_img; ?>" alt="<?= $data['user']->name; ?>"> </a>
                             </div>
                             <!-- Info -->
                             <div>
                                 <div class="flex flex-column align-items-center pt-2">
-                                    <a href="<?= URL_ROOT . "/profile/$post->user_id" ?>">
-                                        <h6 class="card-title mb-0"><?= $post->name; ?></h6>
+                                    <a href="<?= URL_ROOT . "/profile/{$data['user']->id}" ?>">
+                                        <h6 class="card-title mb-0"><?= $data['user']->name; ?></h6>
                                     </a>
 
                                     <p class="small">
                                         <i class="bi bi-clock"></i>
-                                        <?= date("h:i A, D m, Y", strtotime($post->post_time)); ?>
+                                        <?= date("h:i A, D m, Y", strtotime($data['user']->created_at)); ?>
                                     </p>
                                 </div>
                             </div>
