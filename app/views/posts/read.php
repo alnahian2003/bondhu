@@ -49,7 +49,13 @@ require APP_ROOT . "/views/inc/header.php";
                     <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/edit/{$data["post"]->id}" ?>"> <i class="bi bi-pencil-square pe-2"></i>Edit post</a></li>
                     <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "posts/delete/{$data["post"]->id}" ?>"> <i class="bi bi-trash fa-fw pe-2"></i>Delete Post</a></li>
+                    <li>
+                        <form action="<?= URL_ROOT . "/posts/delete/{$data["post"]->id}" ?>" method="post">
+                            <a class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$data["post"]->id}" ?>" type="submit">
+                                <i class="bi bi-trash fa-fw pe-2"></i>
+                                Delete Post</a>
+                        </form>
+                    </li>
                 </ul>
             <?php endif; ?>
         </div>
