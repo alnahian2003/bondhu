@@ -21,4 +21,20 @@ class UserProfile extends Database
             die("Something is wrong");
         }
     }
+
+    public function getPosts()
+    {
+        $this->db->query("SELECT name, profile_img, user_id, title, body, post_img, post_video, posted_at,
+                        posts.id as post_id,
+                        users.id as user_id,
+                        posts.posted_at as post_time
+                        FROM posts
+                        INNER JOIN users
+                        ON posts.user_id = users.id
+                        ORDER BY posts.posted_at DESC
+                        ");
+        $posts = $this->db->resultSet();
+
+        return $posts;
+    }
 }
