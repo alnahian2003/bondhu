@@ -36,7 +36,7 @@ require APP_ROOT . "/views/inc/header.php";
                         </div>
                         <!-- Button -->
                         <div class="d-flex mt-3 justify-content-center ms-sm-auto">
-                            <button class="btn btn-danger-soft me-2" type="button"> <i class="bi bi-pencil-fill pe-1"></i> Edit profile </button>
+                            <a class="btn btn-primary me-2" href="<?= URL_ROOT; ?>/profile/edit" type="button"> <i class="bi bi-pencil-square pe-1"></i> Edit profile </a>
                             <div class="dropdown">
                                 <!-- Card share action menu -->
                                 <button class="icon-md btn btn-light" type="button" id="profileAction2" data-bs-toggle="dropdown" aria-expanded="false">
