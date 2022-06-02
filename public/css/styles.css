@@ -69,10 +69,11 @@ footer {
   align-self: stretch;
 }
 .h-200px {
-  height: 200px !important;
+  height: 400px !important;
 }
 
 .avatar-xxl {
   width: 8rem;
   height: 8rem;
+  margin-top: -5rem;
 }

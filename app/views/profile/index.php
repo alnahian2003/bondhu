@@ -23,14 +23,14 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="h-200px rounded-top" style="background-image:url(https://social.webestica.com/assets/images/bg/05.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
                 <!-- Card body START -->
                 <div class="card-body py-0">
-                    <div class="d-sm-flex align-items-center text-center text-sm-start">
+                    <div class="d-sm-flex align-items-start text-center text-sm-start">
                         <div>
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-3">
                                 <img class="avatar-img rounded-circle border border-white border-3" <?= "src='{$data["user"]->profile_img}' alt=''{$data["user"]->name}''"; ?>>
                             </div>
                         </div>
-                        <div class="ms-sm-4 mt-sm-3">
+                        <div class="ms-sm-3 mt-sm-3">
                             <!-- Info -->
                             <h1 class="mb-0 h3"><?= $data["user"]->name; ?>
                                 <?php if ($data["user"]->is_verified == true) : ?>
