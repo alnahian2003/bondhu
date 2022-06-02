@@ -40,10 +40,10 @@ require APP_ROOT . "/views/inc/header.php";
 
         <!-- Card feed action dropdown START -->
         <div class="dropdown">
-            <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-three-dots"></i>
-            </a>
             <?php if ($data["postUser"]->id == $_SESSION["user_id"]) : ?>
+                <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots"></i>
+                </a>
                 <!-- Card feed action dropdown menu -->
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
                     <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/edit/{$data["post"]->id}" ?>"> <i class="bi bi-pencil-square pe-2"></i>Edit post</a></li>
