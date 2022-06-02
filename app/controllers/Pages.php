@@ -24,16 +24,24 @@ class Pages extends Controller
     // Features Page
     public function features()
     {
-        return $this->view("pages/features");
+        if (isLoggedIn()) {
+            redirect("posts");
+        } else {
+            return $this->view("pages/features");
+        }
     }
 
 
     // About Page
     public function about()
     {
-        $data = [
-            "title" => "About Bondhu",
-        ];
-        $this->view("pages/about", $data);
+        if (isLoggedIn()) {
+            redirect("posts");
+        } else {
+            $data = [
+                "title" => "About Bondhu",
+            ];
+            $this->view("pages/about", $data);
+        }
     }
 }

@@ -33,12 +33,12 @@ require APP_ROOT . "/views/inc/header.php";
             <div class="card-body pt-0">
                 <div class="text-center">
                     <!-- Avatar -->
-                    <div class="avatar-lg mt-n5 mb-3 px-3 pt-3">
-                        <img class="avatar-img rounded border border-white border-3" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>">
+                    <div class="avatar-lg mt-n5 mb-3 pt-3">
+                        <img class="avatar-img rounded border border-white border-3" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>" style="width:250px; height:250px; object-fit:cover;">
                     </div>
                     <!-- Info -->
                     <h5 class="mb-0"> <a href="<?= URL_ROOT; ?>/users/profile"><?= $data["user"]->name; ?></a> </h5>
-                    <small>@<?= $data["user"]->username; ?></small>
+                    <small><?= !empty($data["user"]->username) ? "@{$data["user"]->username}" : ""; ?></small>
                     <!-- <small>Web Developer at ZovoTeam</small> -->
                     <p class="mt-3"><?= $data["user"]->bio; ?></p>
 

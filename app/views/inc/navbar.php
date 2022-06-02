@@ -10,9 +10,16 @@
         <!-- Collapsible Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav col-12 col-lg-auto me-lg-auto mb-2 text-center mb-md-0">
-                <li class="nav-item"><a href="<?= URL_ROOT; ?>/" class="nav-link px-2 text-dark">Home</a></li>
-                <li class="nav-item"><a href="<?= URL_ROOT; ?>/pages/features" class="nav-link px-2 text-dark">Features</a></li>
-                <li class="nav-item"><a href="<?= URL_ROOT; ?>/pages/about" class="nav-link px-2 text-dark">About</a></li>
+                <?php if (!isLoggedIn()) : //navbar for normal visitor
+                ?>
+                    <li class="nav-item"><a href="<?= URL_ROOT; ?>/pages/features" class="nav-link px-2 text-dark">Features</a></li>
+                    <li class="nav-item"><a href="<?= URL_ROOT; ?>/pages/about" class="nav-link px-2 text-dark">About</a></li>
+
+                <?php else : //navbar for logged in user 
+                ?>
+                    <li class="nav-item"><a href="<?= URL_ROOT; ?>/posts" class="nav-link px-2 text-dark">Posts</a></li>
+                    <li class="nav-item"><a href="<?= URL_ROOT . "/profile/{$_SESSION['user_id']}"; ?>" class=" nav-link px-2 text-dark">Profile</a></li>
+                <?php endif; ?>
             </ul>
 
             <!-- Navbar CTA Button -->
