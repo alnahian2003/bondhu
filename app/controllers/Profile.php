@@ -30,7 +30,21 @@ class Profile extends Controller
 
     public function settings()
     {
-        $data = [];
-        return $this->view("profile/settings", $data);
+        if (!isLoggedIn()) {
+            redirect("pages/index");
+        } else {
+            $data = [];
+            return $this->view("profile/settings", $data);
+        }
+    }
+
+    public function edit()
+    {
+        if (!isLoggedIn()) {
+            redirect("pages/index");
+        } else {
+            $data = [];
+            return $this->view("profile/edit", $data);
+        }
     }
 }

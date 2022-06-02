@@ -45,6 +45,12 @@
                         <a class="dropdown-item" href="<?= URL_ROOT . "/profile"; ?>">
                             <i class="bi bi-person m-1"></i> Profile</a>
                     </li>
+
+                    <li>
+                        <a class="dropdown-item" href="<?= URL_ROOT . "/profile/edit"; ?>">
+                            <i class="bi bi-person m-1"></i> Edit Profile</a>
+                    </li>
+
                     <li>
                         <a class="dropdown-item" href="<?= URL_ROOT . "/profile/settings"; ?>">
                             <i class="bi bi-gear m-1"></i> Settings

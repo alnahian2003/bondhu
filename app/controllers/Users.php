@@ -176,7 +176,7 @@ class Users extends Controller
         $_SESSION["name"] = $loggedUser->name;
         $_SESSION["email"] = $loggedUser->email;
 
-        redirect("posts");
+        redirect("profile/edit");
     }
 
     public function logout()
