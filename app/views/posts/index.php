@@ -137,7 +137,11 @@ require APP_ROOT . "/views/inc/header.php";
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$post->post_id}"; ?>"> <i class="bi bi-trash pe-2  text-danger"></i>Delete Post</a></li>
+                                <form action="<?= URL_ROOT . "/posts/delete/{$post->post_id}" ?>" method="post">
+                                    <button class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$post->post_id}" ?>" type="submit">
+                                        <i class="bi bi-trash fa-fw pe-2"></i>
+                                        Delete Post</button>
+                                </form>
                             </ul>
                         <?php endif; ?>
                     </div>

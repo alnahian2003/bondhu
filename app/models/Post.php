@@ -83,4 +83,17 @@ class Post extends Database
             return die("Something is wrong");
         }
     }
+
+    public function deletePost($postId)
+    {
+        $this->db->query("DELETE FROM posts WHERE id = :id");
+        $this->db->bind(":id", $postId);
+
+        // Execute
+        if ($this->db->execute()) {
+            return $this->db->execute();
+        } else {
+            return false;
+        }
+    }
 }

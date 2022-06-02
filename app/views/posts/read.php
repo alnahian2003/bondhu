@@ -51,9 +51,9 @@ require APP_ROOT . "/views/inc/header.php";
                     </li>
                     <li>
                         <form action="<?= URL_ROOT . "/posts/delete/{$data["post"]->id}" ?>" method="post">
-                            <a class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$data["post"]->id}" ?>" type="submit">
+                            <button class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$data["post"]->id}" ?>" type="submit">
                                 <i class="bi bi-trash fa-fw pe-2"></i>
-                                Delete Post</a>
+                                Delete Post</button>
                         </form>
                     </li>
                 </ul>

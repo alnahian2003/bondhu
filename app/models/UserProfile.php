@@ -24,7 +24,7 @@ class UserProfile extends Database
 
     public function getPostsByUser($userId)
     {
-        $this->db->query("SELECT * from posts WHERE user_id = :id");
+        $this->db->query("SELECT * from posts WHERE user_id = :id ORDER BY posted_at DESC");
         $this->db->bind("id", $userId);
         // Execute
         if ($this->db->execute()) {

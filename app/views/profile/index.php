@@ -60,13 +60,10 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="card-footer mt-3 pt-2 pb-0">
                     <!-- Nav profile pages -->
                     <ul class="nav nav-bottom-line align-items-center justify-content-center justify-content-md-start mb-0 border-0">
-                        <li class="nav-item"> <a class="nav-link active" href="my-profile.html"> Posts </a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="my-profile-about.html"> About </a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="my-profile-connections.html"> Connections <span class="badge bg-success bg-opacity-10 text-success small"> 230</span> </a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="my-profile-media.html"> Media</a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="my-profile-videos.html"> Videos</a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="my-profile-events.html"> Events</a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="my-profile-activity.html"> Activity</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#"> Posts </a> </li>
+                        <li class="nav-item"> <a class="nav-link text-muted" href="#"> About </a> </li>
+                        <li class="nav-item"> <a class="nav-link text-muted" href="#"> Photos</a> </li>
+                        <li class="nav-item"> <a class="nav-link text-muted" href="<?= URL_ROOT ?>/profile/settings"> Settings</a> </li>
                     </ul>
                 </div>
             </div>
@@ -203,9 +200,9 @@ require APP_ROOT . "/views/inc/header.php";
                                     </li>
                                     <li>
                                         <form action="<?= URL_ROOT . "/posts/delete/{$post->id}" ?>" method="post">
-                                            <a class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$post->id}" ?>" type="submit">
+                                            <button class="dropdown-item text-danger" href="<?= URL_ROOT . "/posts/delete/{$post->id}" ?>" type="submit">
                                                 <i class="bi bi-trash fa-fw pe-2"></i>
-                                                Delete Post</a>
+                                                Delete Post</button>
                                         </form>
                                     </li>
                                 </ul>
