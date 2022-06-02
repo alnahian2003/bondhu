@@ -112,11 +112,11 @@ class Posts extends Controller
         // If post found, then show the page with content. otherwise redirect to homepage
         $post = $this->postModel->getPostById($postId);
         if ($post == true) {
-            $postUser = $this->postModel->getPostUserById($post->user_id);
+            $currentUser = $this->postModel->getUserById($_SESSION["user_id"]);
             // Load the view
             $data = [
                 "post" => $post,
-                "user" => $postUser,
+                "user" => $currentUser,
             ];
             return $this->view("posts/read", $data);
         } else {
