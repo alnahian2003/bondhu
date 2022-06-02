@@ -11,9 +11,7 @@ require APP_ROOT . "/views/inc/header.php";
         background-color: #f0f2f5;
     }
 </style>
-<pre><?= print_r($data["post"]) ?></pre>
-<pre><?= print_r($data["user"]) ?></pre>
-<pre><?= print_r($data["postUser"]) ?></pre>
+
 <div class="col-sm-8 card card-body mx-auto">
     <!-- Full Post -->
     <!-- Post Author -->

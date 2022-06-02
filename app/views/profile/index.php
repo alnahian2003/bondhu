@@ -20,7 +20,7 @@ require APP_ROOT . "/views/inc/header.php";
             <!-- My profile START -->
             <div class="card">
                 <!-- Cover image -->
-                <div class="h-200px rounded-top" style="background-image:url(<?= !empty($data["user"]->cover_img) ? $data["user"]->cover_img : 'https://images.pexels.com/photos/7659673/pexels-photo-7659673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'; ?>); background-color: gray; background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="h-200px rounded-top" style="background-image:url(<?= !empty($data["user"]->cover_img) ? $data["user"]->cover_img : 'https://images.squarespace-cdn.com/content/v1/57392608b6aa607768e72055/1477265014203-CDUS7TTWL7BJNIB5DYVG/artwork_1.jpg'; ?>); background-color: gray; background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
                 <!-- Card body START -->
                 <div class="card-body py-0">
                     <div class="d-sm-flex align-items-start text-center text-sm-start">
