@@ -154,7 +154,7 @@ require APP_ROOT . "/views/inc/header.php";
 
                     <?php if (!empty($post->post_img)) : ?>
                         <!-- Post Image -->
-                        <img src="<?= $post->post_img; ?>" class="card-img-top img-fluid rounded-3" alt="<?= $post->title; ?>">
+                        <img src="<?= $post->post_img; ?>" class="card-img-top img-fluid rounded-3" alt="<?= $post->title; ?>" loading="lazy">
                     <?php endif; ?>
 
                     <?php if (!empty($post->post_video)) : ?>
