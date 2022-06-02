@@ -18,7 +18,7 @@
                 <?php else : //navbar for logged in user 
                 ?>
                     <li class="nav-item"><a href="<?= URL_ROOT; ?>/posts" class="nav-link px-2 text-dark">Posts</a></li>
-                    <li class="nav-item"><a href="<?= URL_ROOT . "/profile/{$_SESSION['user_id']}"; ?>" class=" nav-link px-2 text-dark">Profile</a></li>
+                    <li class="nav-item"><a href="<?= URL_ROOT . "/profile/"; ?>" class=" nav-link px-2 text-dark">Profile</a></li>
                 <?php endif; ?>
             </ul>
 
