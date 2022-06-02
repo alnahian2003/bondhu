@@ -53,3 +53,26 @@ footer {
 .me-2 {
   margin-right: 0.5rem !important;
 }
+
+.vstack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+.h-200px {
+  height: 200px !important;
+}
+
+.avatar-xxl {
+  width: 8rem;
+  height: 8rem;
+}
