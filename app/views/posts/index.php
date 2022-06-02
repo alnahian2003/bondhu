@@ -37,7 +37,7 @@ require APP_ROOT . "/views/inc/header.php";
                         <img class="avatar-img rounded border border-white border-3" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>" style="width:250px; height:250px; object-fit:cover;">
                     </div>
                     <!-- Info -->
-                    <h5 class="mb-0"> <a href="<?= URL_ROOT; ?>/users/profile"><?= $data["user"]->name; ?></a> </h5>
+                    <h5 class="mb-0"> <a href="<?= URL_ROOT; ?>/profile"><?= $data["user"]->name; ?></a> </h5>
                     <small><?= !empty($data["user"]->username) ? "@{$data["user"]->username}" : ""; ?></small>
                     <!-- <small>Web Developer at ZovoTeam</small> -->
                     <p class="mt-3"><?= $data["user"]->bio; ?></p>
@@ -48,7 +48,7 @@ require APP_ROOT . "/views/inc/header.php";
             </div>
             <!-- Card body END -->
             <!-- Card footer -->
-            <a class="card-footer btn btn-primary bg-primary bg-gradient text-white fw-bold text-center py-2 btn-sm w-100" href="<?= URL_ROOT; ?>/users/profile">View Profile </a>
+            <a class="card-footer btn btn-primary bg-primary bg-gradient text-white fw-bold text-center py-2 btn-sm w-100" href="<?= URL_ROOT; ?>/profile">View Profile </a>
         </div>
     </div>
 
