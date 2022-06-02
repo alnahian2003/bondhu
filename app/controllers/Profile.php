@@ -27,4 +27,10 @@ class Profile extends Controller
             return $this->view("profile/index", $data);
         }
     }
+
+    public function settings()
+    {
+        $data = [];
+        return $this->view("profile/settings", $data);
+    }
 }

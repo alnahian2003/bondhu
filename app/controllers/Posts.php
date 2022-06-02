@@ -36,7 +36,7 @@ class Posts extends Controller
 
             $data = [
                 "user_id" => $_SESSION["user_id"],
-                "title" => htmlspecialchars(trim($_POST["title"])),
+                "title" => isset($_POST['title']) ? htmlspecialchars(trim($_POST["title"])) : "",
                 "body" => htmlspecialchars(trim($_POST["body"])),
                 "post_img" => htmlspecialchars(trim($_POST["post_img"])),
                 "post_video" => htmlspecialchars(trim($_POST["post_video"])),
@@ -75,18 +75,27 @@ class Posts extends Controller
                 $data["post_video"] = get_youtube_id_from_url($data["post_video"]);
             }
 
+            // Validate a blank form
+            if (empty($data["title"]) && empty($data["body"]) && (empty($data["post_img"]) || empty($data["post_video"]))) {
+                $data["title_error"] = "Give a Title or Write Something";
+                $data["body_error"] = "Write Something Or Leave it Blank";
+                $data["post_img_error"] = "Please Provide a Valid Image Source";
+                $data["post_video_error"] = "Give a Valid YouTube Link";
+            }
+
             // Make sure no error
             /*
                 * We're only gonna accept either just a title, or a body (one of these is must).
                 *If user include any image/video link, they're gonna show up too 
             */
-            if (!empty($data["title"]) || !empty($data["body"]) || $data["post_img"] || $data["post_video"]) {
+            // !empty($data["title"]) || !empty($data["body"]) || $data["post_img"] || $data["post_video"]
+            if (empty($data["title_error"]) || empty($data["body_error"]) && (empty($data["post_img_error"]) || empty($data["post_video_error"]))) {
                 // Validated
                 if ($this->postModel->createPost($data)) {
                     flash("post_message", "Post Created Successfully!");
                     redirect("posts");
                 } else {
-                    flash("post_message", "Cannot Created The Post", "alert-danger");
+                    flash("post_message", "Cannot Create The Post", "alert-danger");
                     die("Can't Process The Request At This Moment");
                 }
             } else {
