@@ -44,7 +44,11 @@ class Profile extends Controller
         if (!isLoggedIn()) {
             redirect("pages/index");
         } else {
-            $data = [];
+            $userProfile = $this->profileModel->getUserProfile($_SESSION["user_id"]);
+
+            $data = [
+                "user" => $userProfile,
+            ];
             return $this->view("profile/edit", $data);
         }
     }

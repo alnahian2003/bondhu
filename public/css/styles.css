@@ -75,5 +75,8 @@ footer {
 .avatar-xxl {
   width: 8rem;
   height: 8rem;
+}
+
+.mt-n5 {
   margin-top: -5rem;
 }

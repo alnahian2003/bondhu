@@ -27,7 +27,7 @@ require APP_ROOT . "/views/inc/header.php";
                         <div>
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-3">
-                                <img class="avatar-img rounded-circle border border-white border-3" <?= "src='{$data["user"]->profile_img}' alt=''{$data["user"]->name}''"; ?>>
+                                <img class="avatar-img rounded-circle border border-white border-3" <?= "src='{$data["user"]->profile_img}' alt='{$data["user"]->name}'"; ?>>
                             </div>
                         </div>
                         <div class="ms-sm-3 mt-sm-3">
