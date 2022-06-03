@@ -187,18 +187,6 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
     </form>
 </div>
 
-<pre>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        print_r($_FILES);
-        echo "<br>";
-        print_r($_FILES["profileImg"]["name"]);
-        echo "<br>";
-        print_r($_FILES["coverImg"]["name"]);
-    }
-    ?>
-</pre>
-
 <?php
 // Include Footer
 require APP_ROOT . "/views/inc/footer.php";

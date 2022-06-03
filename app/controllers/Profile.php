@@ -102,7 +102,6 @@ class Profile extends Controller
                     } else {
                         $filepath = URL_ROOT . "/" . $profileImgDir . $uploadedImg["name"];
                         if ($this->profileModel->uploadProfileImg($_SESSION["user_id"], $filepath) && move_uploaded_file($uploadedImg["tmp_name"], $profileImgDir . $uploadedImg["name"])) {
-                            echo $filepath;
                             flash("profile_image_message", "The file " . htmlspecialchars(basename($uploadedImg["name"])) . " has been uploaded.");
                         } else {
                             flash("profile_image_message", "Sorry, there was an error uploading your image.", "alert-danger");
