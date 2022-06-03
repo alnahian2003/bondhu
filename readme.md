@@ -17,6 +17,26 @@
   <a href="https://alnahian2003.github.io">alnahian2003</a>
 </p>
 <hr />
+
+<section>
+<h5>NOTE: Upload the Check config folder and update with your preferred data ⚠</h5>
+<ul>
+Demo user's login credentials are username: 
+<ol>
+    Al Nahian
+    <li>Username: alnahian2003</li>
+    <li>Password: password</li>
+</ol>
+
+<ol>
+    Dwight K Schrute
+    <li>Username: dwight</li>
+    <li>Password: password</li>
+</ol>
+</ul>
+</section>
+
+<hr/>
 <section>
   <h2>Project Screenshots</h2>
   <figure>
@@ -117,6 +137,7 @@
     Back End:
     <li>Core PHP</li>
     <li>AlanMVC (Made by me)</li>
+    <li>MySQL</li>
   </ul>
 </section>
 
