@@ -28,7 +28,7 @@ require APP_ROOT . "/views/inc/header.php";
                         <h6 class="card-title mb-0"><?= $data["postUser"]->name; ?></h6>
                     </a>
 
-                    <p class="small">
+                    <p class="small text-muted fw-semibold">
                         <i class="bi bi-clock"></i>
                         <?= date("h:i A, D m, Y", strtotime($data["post"]->posted_at)); ?>
                     </p>
