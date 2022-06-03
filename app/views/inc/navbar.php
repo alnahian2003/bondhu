@@ -48,7 +48,7 @@
 
                     <li>
                         <a class="dropdown-item" href="<?= URL_ROOT . "/profile/edit"; ?>">
-                            <i class="bi bi-person m-1"></i> Edit Profile</a>
+                            <i class="bi bi-pencil m-1"></i> Edit Profile</a>
                     </li>
 
                     <li>
