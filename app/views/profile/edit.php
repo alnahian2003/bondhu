@@ -16,6 +16,8 @@ require APP_ROOT . "/views/inc/header.php";
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         print_r($_POST);
+        echo "<br>";
+        print_r($_FILES);
     }
     ?>
 </pre>
@@ -34,17 +36,19 @@ require APP_ROOT . "/views/inc/header.php";
     <p class="form-text text-muted">
         Edit your public profile informations such as Profile Picture, Username, Bio, About, Location, etc.
     </p>
-    <form action="<?= URL_ROOT . "/profile/edit/{$data["user"]->id}"; ?>" method="POST" class="mb-3" enctype="multipart/form-data">
+    <form action="<?= URL_ROOT; ?>/profile/edit/" method="POST" class="mb-3" enctype="multipart/form-data">
 
         <!-- Profile Image -->
         <div class="row g-2 my-2 d-flex align-items-end">
             <!-- Preview of profile image -->
             <div class="text-center">
                 <label for="formFileLg" class="form-label">
-                    <!-- Current Profile Picture -->
-                    <div class="avatar avatar-xxl mb-3">
-                        <img class="avatar-img rounded-circle border border-white border-3" src="https://alnahian2003.github.io/images/avatar.webp" alt="" al="" nahian''="">
-                    </div>
+                    <?php if (!empty($data["user"]->profile_img)) : ?>
+                        <!-- Current Profile Picture -->
+                        <div class="avatar avatar-xxl mb-3">
+                            <img class="avatar-img rounded-circle border border-white border-3" src="<?= $data["user"]->profile_img ?>" alt="<?= $data["user"]->name ?>">
+                        </div>
+                    <?php endif; ?>
                 </label>
             </div>
 
@@ -53,13 +57,11 @@ require APP_ROOT . "/views/inc/header.php";
                 <label for="formFileLg" class="form-label form-text text-muted">Upload a Profile Picture</label>
                 <input class="form-control form-control-lg" name="profile_img" id="formFileLg" type="file">
             </div>
-            <!-- 
-                TODO: Have to fix the bug of uploading image
-             -->
         </div>
 
         <hr class="hr">
 
+        <!-- Username & email address -->
         <div class="row g-2 my-2">
             <div class="col-md">
                 <div class="form-floating">
@@ -75,6 +77,7 @@ require APP_ROOT . "/views/inc/header.php";
             </div>
         </div>
 
+        <!-- Bio -->
         <div class="row g-2 my-2">
             <div class="col-md">
                 <div class="form-floating">
@@ -114,10 +117,22 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="form-floating">
                     <select class="form-control" name="relationship" id="relationship">
                         <option disabled selected>Select a Status</option>
-                        <option value="Single">Single</option>
-                        <option value="Married">Married</option>
-                        <option value="Complicated">Complicated</option>
-                        <option value="Other">Other</option>
+
+                        <option value="Single" <?php if ($data["user"]->relationship === "Single") {
+                                                    echo "selected";
+                                                } ?>>Single</option>
+
+                        <option value="Married" <?php if ($data["user"]->relationship === "Married") {
+                                                    echo "selected";
+                                                } ?>>Married</option>
+
+                        <option value="Complicated" <?php if ($data["user"]->relationship === "Complicated") {
+                                                        echo "selected";
+                                                    } ?>>Complicated</option>
+
+                        <option value="Other" <?php if ($data["user"]->relationship === "Other") {
+                                                    echo "selected";
+                                                } ?>>Other</option>
                     </select>
 
                     <label for="relationship"><i class="bi bi-heart me-1"></i> Status</label>
@@ -133,3 +148,8 @@ require APP_ROOT . "/views/inc/header.php";
 // Include Footer
 require APP_ROOT . "/views/inc/footer.php";
 ?>
+
+<!-- 
+
+TODO: Validate the edit form and process it perfectly
+ -->
