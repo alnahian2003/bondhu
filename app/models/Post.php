@@ -84,6 +84,26 @@ class Post extends Database
         }
     }
 
+    public function editPost($data)
+    {
+        // Make the query
+        $this->db->query("UPDATE posts SET title = :title, body = :body, post_img = :post_img, post_video = :post_video WHERE id = :id");
+
+        // Bind values
+        $this->db->bind(":id", $data["postId"]);
+        $this->db->bind(":title", $data["title"]);
+        $this->db->bind(":body", $data["body"]);
+        $this->db->bind(":post_img", $data["post_img"]);
+        $this->db->bind(":post_video", $data["post_video"]);
+
+        // Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function deletePost($postId)
     {
         $this->db->query("DELETE FROM posts WHERE id = :id");

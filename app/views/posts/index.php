@@ -116,7 +116,7 @@ require APP_ROOT . "/views/inc/header.php";
                                     <h6 class="card-title mb-0"><?= $post->name; ?></h6>
                                 </a>
 
-                                <p class="small">
+                                <p class="small text-muted">
                                     <i class="bi bi-clock"></i>
                                     <?= date("h:i A, D m, Y", strtotime($post->post_time)); ?>
                                 </p>
@@ -124,12 +124,12 @@ require APP_ROOT . "/views/inc/header.php";
                         </div>
                     </div>
 
-                    <!-- Card feed action dropdown START -->
-                    <div class="dropdown">
-                        <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-three-dots"></i>
-                        </a>
-                        <?php if ($data["user"]->id == $_SESSION["user_id"]) : ?>
+                    <?php if ($post->user_id == $_SESSION["user_id"]) : ?>
+                        <!-- Card feed action dropdown START -->
+                        <div class="dropdown">
+                            <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
                             <!-- Card feed action dropdown menu -->
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
                                 <li><a class="dropdown-item" href="<?= URL_ROOT . "/posts/read/{$post->post_id}"; ?>"> <i class="bi bi-eye pe-2"></i>View Full Post</a></li>
@@ -143,9 +143,9 @@ require APP_ROOT . "/views/inc/header.php";
                                         Delete Post</button>
                                 </form>
                             </ul>
-                        <?php endif; ?>
-                    </div>
-                    <!-- Card feed action dropdown END -->
+                        </div>
+                        <!-- Card feed action dropdown END -->
+                    <?php endif; ?>
                 </div>
 
                 <!-- Post Body -->

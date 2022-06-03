@@ -1,10 +1,11 @@
 <?php
 // Site Title
-$site_title = "Create Post";
+$site_title = "Edit Post";
 
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
 ?>
+
 <style>
     body {
         background-color: #f0f2f5;
@@ -16,10 +17,10 @@ require APP_ROOT . "/views/inc/header.php";
 <div class="col-md-8 justify-center-center mx-auto">
     <!-- Back Button -->
     <a href="<?= URL_ROOT; ?>/posts" class="my-3 btn btn-outline-secondary"><i class="bi bi-arrow-90deg-left"></i> Go Back</a>
-    <!-- Create Post -->
+    <!-- Edit Post -->
     <div class="card shadow border-light p-3 mb-3 rounded-4">
         <div class="card-body">
-            <h2 class="post-title text-center fw-bold mb-2">Create a Post</h2>
+            <h2 class="post-title text-center fw-bold mb-2">Edit Post</h2>
             <hr class="border">
             <div class="d-flex mb-3 gap-2">
                 <!-- Avatar -->
@@ -27,7 +28,7 @@ require APP_ROOT . "/views/inc/header.php";
                     <a href="<?= URL_ROOT; ?>/users/profile"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->name; ?>"> </a>
                 </div>
                 <!-- Post input -->
-                <form class="w-100" id="createPost" method="POST" action="<?= URL_ROOT; ?>/posts/create">
+                <form class="w-100" id="createPost" method="POST" action="<?= URL_ROOT . "/posts/edit/{$data['postId']}"; ?>">
                     <!-- Post Title -->
                     <div class="mb-3">
                         <label for="title" class="label fw-bold text-dark mb-2">Title (Optional)</label>

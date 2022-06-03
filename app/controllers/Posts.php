@@ -92,7 +92,7 @@ class Posts extends Controller
             if (empty($data["title_error"]) || empty($data["body_error"]) && (empty($data["post_img_error"]) || empty($data["post_video_error"]))) {
                 // Validated
                 if ($this->postModel->createPost($data)) {
-                    flash("post_message", "Post Created Successfully!");
+                    flash("post_message", "<i class='bi bi-check-circle'></i> Post Created Successfully!");
                     redirect("posts");
                 } else {
                     flash("post_message", "Cannot Create The Post", "alert-danger");
@@ -135,6 +135,104 @@ class Posts extends Controller
         }
     }
 
+    public function edit($postId)
+    {
+        $currentUser = $this->postModel->getUserById($_SESSION["user_id"]);
+        // Check for POST
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Sanitize & Process Create Post Form
+            // $_POST = htmlspecialchars(trim(INPUT_POST));
+
+
+            $data = [
+                "postId" => $postId,
+                "user_id" => $_SESSION["user_id"],
+                "title" => isset($_POST['title']) ? htmlspecialchars(trim($_POST["title"])) : "",
+                "body" => htmlspecialchars(trim($_POST["body"])),
+                "post_img" => htmlspecialchars(trim($_POST["post_img"])),
+                "post_video" => htmlspecialchars(trim($_POST["post_video"])),
+                "user" => $currentUser,
+
+                // Error variables
+                "title_error" => "",
+                "body_error" => "",
+                "post_img_error" => "",
+                "post_video_error" => "",
+            ];
+
+            // Validate Title
+            if (strlen($data["title"]) > 255) {
+                $data["title_error"] = "Title must be within 255 characters";
+            }
+
+            // Validate Image URL
+            if (!empty($data["post_img"])) {
+                if (!@getimagesize($data["post_img"])) {
+                    $data["post_img_error"] = "Please provide a valid image link";
+                }
+            }
+            // Validate Video URL and return youtube video id
+            if (!empty($data["post_video"])) {
+                if (!filter_var($data["post_video"], FILTER_VALIDATE_URL)) {
+                    $data["post_video_error"] = "Please provide a valid video url";
+                }
+
+                function get_youtube_id_from_url($url)
+                {
+                    preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $results);
+                    return $results[0];
+                }
+
+                $data["post_video"] = get_youtube_id_from_url($data["post_video"]);
+            }
+
+            // Validate a blank form
+            if (empty($data["title"]) && empty($data["body"]) && (empty($data["post_img"]) || empty($data["post_video"]))) {
+                $data["title_error"] = "Give a Title or Write Something";
+                $data["body_error"] = "Write Something Or Leave it Blank";
+                $data["post_img_error"] = "Please Provide a Valid Image Source";
+                $data["post_video_error"] = "Give a Valid YouTube Link";
+            }
+
+            // Make sure no error
+            /*
+                * We're only gonna accept either just a title, or a body (one of these is must).
+                *If user include any image/video link, they're gonna show up too 
+            */
+            // !empty($data["title"]) || !empty($data["body"]) || $data["post_img"] || $data["post_video"]
+            if (empty($data["title_error"]) || empty($data["body_error"]) && (empty($data["post_img_error"]) || empty($data["post_video_error"]))) {
+                // Validated
+                if ($this->postModel->editPost($data)) {
+                    flash("post_message", "<i class='bi bi-check2-square'></i> Post Edited Successfully!", "alert-info");
+                    redirect("posts");
+                } else {
+                    flash("post_message", "Cannot Edit The Post", "alert-danger");
+                    die("Can't Process The Request At This Moment");
+                }
+            } else {
+                // Load view with error
+                return $this->view("posts/edit", $data);
+            }
+        } else {
+            $post = $this->postModel->getPostById($postId);
+            // Check for owner
+            if ($post->user_id === $_SESSION["user_id"]) {
+                // Load the view
+                $data = [
+                    "postId" => $postId,
+                    "title" => $post->title,
+                    "body" => $post->body,
+                    "post_img" => $post->post_img,
+                    "post_video" => $post->post_video,
+                    "user" => $currentUser,
+                ];
+                return $this->view("posts/edit", $data);
+            } else {
+                redirect("posts");
+            }
+        }
+    }
+
     public function delete($postId)
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -147,7 +245,7 @@ class Posts extends Controller
                 redirect("posts");
             } else {
                 if ($this->postModel->deletePost($postId)) {
-                    flash("post_message", "Post Removed", "alert-danger");
+                    flash("post_message", "<i class='bi bi-trash3'></i> Post Removed Successfully!", "alert-danger");
                     redirect("posts");
                 } else {
                     die("Something went wrong");

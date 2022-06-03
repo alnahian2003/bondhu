@@ -177,7 +177,7 @@ require APP_ROOT . "/views/inc/header.php";
                                         <h6 class="card-title mb-0"><?= $data['user']->name; ?></h6>
                                     </a>
 
-                                    <p class="small">
+                                    <p class="small text-muted">
                                         <i class="bi bi-clock"></i>
                                         <?= date("h:i A, D m, Y", strtotime($data['user']->created_at)); ?>
                                     </p>
