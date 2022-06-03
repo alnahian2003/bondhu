@@ -33,7 +33,7 @@ require APP_ROOT . "/views/inc/header.php";
             <div class="card-body pt-0">
                 <div class="text-center">
                     <!-- Avatar -->
-                    <div class="avatar-lg mt-n5 mb-3 pt-3">
+                    <div class="avatar-lg mb-3 pt-3">
                         <img class="avatar-img rounded border border-white border-3" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>" style="width:250px; height:250px; object-fit:cover;">
                     </div>
                     <!-- Info -->
@@ -229,7 +229,7 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="hstack gap-2 mb-3">
                     <!-- Avatar -->
                     <div class="avatar">
-                        <a href="#!"><img class="avatar-img rounded-circle" src="https://scontent.fdac145-1.fna.fbcdn.net/v/t39.30808-1/279795680_1441069229659108_4281890619985583931_n.jpg?stp=c39.34.258.257a_dst-jpg_p320x320&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeFJwsQbcERKjlx1Y3xWEpj1Gl5070GyfsAaXnTvQbJ-wPLGQ6KlXNm7jnHIF8oqJ-5kyQEZba0QxJGlW0K0Uv4J&_nc_ohc=hEZ3JLrrGkEAX-3ufIf&_nc_ht=scontent.fdac145-1.fna&oh=00_AT-8Hs8-QqB_8vN8dNWHAvhnm8EfptyHpQqmeJaHOhVU7Q&oe=6299ED63" alt=""></a>
+                        <a href="#!"><img class="avatar-img rounded-circle" src="img/users/default.svg" alt=""></a>
                     </div>
                     <!-- Title -->
                     <div class="overflow-hidden">
@@ -244,7 +244,7 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="hstack gap-2 mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-story">
-                        <a href="#!"> <img class="avatar-img rounded-circle" src="https://scontent.fdac145-1.fna.fbcdn.net/v/t1.6435-1/136949813_763137184292303_8322722208065402922_n.jpg?stp=dst-jpg_p320x320&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeHMaKW6IFTxK42OpwZDOZXCOjf5b7BMRaA6N_lvsExFoA8AcKSRhUroZHWJifmTBqyqnuh97vdD6n32jm5_Vced&_nc_ohc=2nm9Vt6nSyYAX-J4Peu&_nc_ht=scontent.fdac145-1.fna&oh=00_AT_dL2qRKP4__-Crmm1z4jG5AVynjta1NHqkp5qkaP9TRA&oe=62BA9945" alt=""> </a>
+                        <a href="#!"> <img class="avatar-img rounded-circle" src="img/users/default.svg" alt=""> </a>
                     </div>
                     <!-- Title -->
                     <div class="overflow-hidden">
