@@ -31,7 +31,7 @@ require APP_ROOT . "/views/inc/header.php";
 </div>
 
 <!-- Edit Profile Form -->
-<div class="col-md-8 mx-auto">
+<div class="col-md-8 bg-white bg-gradient p-5 rounded-3 mx-auto">
     <h1>Edit Profile</h1>
     <p class="form-text text-muted">
         Edit your public profile informations such as Profile Picture, Username, Bio, About, Location, etc.
