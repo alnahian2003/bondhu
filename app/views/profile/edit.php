@@ -5,9 +5,9 @@ $site_title = "Edit Profile — {$data['user']->name}";
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
 
-$profile_image_path = ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "/img/users/{$data["user"]->profile_img}";
+$profile_image_path = ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "{$data["user"]->profile_img}";
 
-$cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img/users/{$data["user"]->cover_img}" : "/img/users/{$data["user"]->cover_img}";
+$cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img/users/{$data["user"]->cover_img}" : "{$data["user"]->cover_img}";
 ?>
 
 <style>
@@ -15,16 +15,6 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
         background-color: #f0f2f5;
     }
 </style>
-
-<pre>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        print_r($_POST);
-        echo "<br>";
-        print_r($_FILES);
-    }
-    ?>
-</pre>
 
 <div class="col-md-8 d-flex justify-content-between mx-auto mb-3">
     <!-- Back to Profile Button -->
@@ -36,31 +26,80 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
 
 <!-- Edit Profile Form -->
 <div class="col-md-8 bg-white bg-gradient p-5 rounded-3 mx-auto">
+    <?php flash("profile_image_message"); ?>
     <h1>Edit Profile</h1>
     <p class="form-text text-muted">
         Edit your public profile informations such as Profile Picture, Username, Bio, About, Location, etc.
     </p>
-    <form action="<?= URL_ROOT; ?>/profile/edit/" method="POST" class="mb-3" enctype="multipart/form-data">
+    <form action="<?= URL_ROOT; ?>/profile/edit" method="POST" class="mb-3" enctype="multipart/form-data">
 
-        <!-- Profile Image -->
-        <div class="row g-2 my-2 d-flex align-items-end">
-            <!-- Preview of profile image -->
-            <div class="text-center">
-                <label for="formFileLg" class="form-label">
-                    <?php if (!empty($data["user"]->profile_img)) : ?>
-                        <!-- Current Profile Picture -->
-                        <div class="avatar avatar-xxl mb-3">
-                            <img class="avatar-img rounded-circle border border-white border-3" src="<?= $profile_image_path ?>" alt="<?= $data["user"]->name ?>">
+
+        <div class="accordion accordion-flush" id="accordion">
+
+            <!-- Profile Picture Accordion -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="profile_image_accordion">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Change Profile Picture
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="profile_image_accordion" data-bs-parent="#contentUpload">
+                    <div class="accordion-body">
+                        <!-- Profile Image -->
+                        <div class="row g-2 my-2 d-flex align-items-end">
+                            <!-- Preview of profile image -->
+                            <div class="text-center">
+                                <label for="profileImg" class="form-label">
+                                    <?php if (!empty($data["user"]->profile_img)) : ?>
+                                        <!-- Current Profile Picture -->
+                                        <div class="avatar avatar-xxl mb-3">
+                                            <img class="avatar-img rounded-circle border border-white border-3" src="<?= $profile_image_path ?>" alt="<?= $data["user"]->name ?>">
+                                        </div>
+                                    <?php endif; ?>
+                                </label>
+                            </div>
+
+                            <!-- Upload Profile Image -->
+                            <div class="col-md mx-auto">
+                                <label for="profileImg" class="form-label form-text text-muted">Upload a Profile Picture</label>
+                                <input type="file" class="form-control form-control-lg" name="profileImg" id="profileImg">
+                            </div>
                         </div>
-                    <?php endif; ?>
-                </label>
+                    </div>
+                </div>
             </div>
 
-            <!-- Upload Profile Image -->
-            <div class="col-md mx-auto">
-                <label for="formFileLg" class="form-label form-text text-muted">Upload a Profile Picture</label>
-                <input class="form-control form-control-lg" name="profile_img" id="formFileLg" type="file">
+            <!-- Cover Picture Accordion -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="cover_image_accordion">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="true" aria-controls="flush-collapseTwo">
+                        Change Cover Photo
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="cover_image_accordion" data-bs-parent="#contentUpload">
+                    <div class="accordion-body">
+                        <!-- Profile Image -->
+                        <div class="row g-2 my-2 d-flex align-items-end">
+                            <!-- Preview of profile image -->
+                            <div class="text-center">
+                                <label for="coverImg" class="form-label">
+                                    <?php if (!empty($data["user"]->cover_img)) : ?>
+                                        <!-- Current Cover Photo -->
+                                        <img class="img-fluid rounded-3" src="<?= $cover_image_path ?>" alt="<?= $data["user"]->name ?>">
+                                    <?php endif; ?>
+                                </label>
+                            </div>
+
+                            <!-- Upload Profile Image -->
+                            <div class="col-md mx-auto">
+                                <label for="coverImg" class="form-label form-text text-muted">Upload a Cover Photo</label>
+                                <input type="file" class="form-control form-control-lg" name="coverImg" id="coverImg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
 
         <hr class="hr">
@@ -147,6 +186,18 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
         <button class="btn btn-lg btn-primary mx-auto w-100 mt-3" type="submit">Proceed</button>
     </form>
 </div>
+
+<pre>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        print_r($_FILES);
+        echo "<br>";
+        print_r($_FILES["profileImg"]["name"]);
+        echo "<br>";
+        print_r($_FILES["coverImg"]["name"]);
+    }
+    ?>
+</pre>
 
 <?php
 // Include Footer

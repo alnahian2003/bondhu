@@ -33,4 +33,17 @@ class UserProfile extends Database
             die("Something is wrong");
         }
     }
+
+    public function uploadProfileImg($id, $fileWithPath)
+    {
+        $this->db->query("UPDATE users SET profile_img = :filepath WHERE id = :id");
+        $this->db->bind(":id", $id);
+        $this->db->bind(":filepath", $fileWithPath);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

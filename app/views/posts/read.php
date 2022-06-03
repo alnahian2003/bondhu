@@ -5,7 +5,7 @@ $site_title = "Full Post";
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
 
-$profile_image_path = ($data["postUser"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["postUser"]->profile_img}" : "/img/users/{$data["postUser"]->profile_img}";
+$profile_image_path = ($data["postUser"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["postUser"]->profile_img}" : "{$data["postUser"]->profile_img}";
 ?>
 
 <style>

@@ -5,7 +5,7 @@ $site_title = "Create Post";
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
 
-$profile_image_path = ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "/img/users/{$data["user"]->profile_img}";
+$profile_image_path = ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "{$data["user"]->profile_img}";
 ?>
 <style>
     body {

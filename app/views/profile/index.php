@@ -6,9 +6,9 @@ $site_title = "{$data['user']->name} | Bondhu";
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
 
-$profile_image_path = ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "/img/users/{$data["user"]->profile_img}";
+$profile_image_path = ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "{$data["user"]->profile_img}";
 
-$cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img/users/{$data["user"]->cover_img}" : "/img/users/{$data["user"]->cover_img}";
+$cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img/users/{$data["user"]->cover_img}" : "{$data["user"]->cover_img}";
 
 ?>
 
