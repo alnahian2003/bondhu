@@ -34,7 +34,7 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="text-center">
                     <!-- Avatar -->
                     <div class="avatar-lg mb-3 pt-3">
-                        <img class="avatar-img rounded border border-white border-3" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>" style="width:250px; height:250px; object-fit:cover;">
+                        <img class="avatar-img rounded border border-white border-3" src="<?= ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "/img/users/{$data["user"]->profile_img}"; ?>" alt="<?= $data["user"]->username; ?>" style="width:250px; height:250px; object-fit:cover;">
                     </div>
                     <!-- Info -->
                     <h5 class="mb-0"> <a href="<?= URL_ROOT; ?>/profile"><?= $data["user"]->name; ?></a> </h5>
@@ -43,7 +43,7 @@ require APP_ROOT . "/views/inc/header.php";
                     <p class="mt-3"><?= $data["user"]->bio; ?></p>
 
                     <!-- User stat END -->
-                    <small class="text-muted">Joined on <?= date("d M, Y", strtotime($data["user"]->created_at)); ?></small>
+                    <small class="text-muted fw-semibold">Joined on <?= date("d M, Y", strtotime($data["user"]->created_at)); ?></small>
                 </div>
             </div>
             <!-- Card body END -->
@@ -59,17 +59,17 @@ require APP_ROOT . "/views/inc/header.php";
             <div class="d-flex mb-3">
                 <!-- Avatar -->
                 <div class="avatar avatar-xs me-2">
-                    <a href="<?= URL_ROOT; ?>/profile"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>"> </a>
+                    <a href="<?= URL_ROOT; ?>/profile"> <img class="avatar-img rounded-circle" src="<?= ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "/img/users/{$data["user"]->profile_img}"; ?>" alt="<?= $data["user"]->username; ?>" alt="<?= $data["user"]->username; ?>"> </a>
                 </div>
                 <!-- Post input -->
-                <form class="w-100" action="<?= URL_ROOT; ?>/posts/create" method="POST" id="post">
+                <form class="w-100" action="<?= URL_ROOT; ?>/posts/create" method="POST" id="post" enctype="multipart/form-data">
                     <textarea name="body" class="form-control pe-4" rows="2" data-autoresize="" placeholder="Share your thoughts..."></textarea>
 
-                    <!-- Post Image Url -->
+                    <!-- Post Image -->
                     <div class="collapse multi-collapse" id="postImageUrlToggler">
                         <div class="my-3">
-                            <label for="post_img" class="label text-muted mb-2">Image Link</label>
-                            <input type="url" name="post_img" class="form-control" id="post_img" placeholder="https://example.com/image.jpg">
+                            <label for="post_img" class="label text-muted mb-2">Post Image</label>
+                            <input type="file" name="post_img" class="form-control" id="post_img">
                         </div>
                     </div>
 
@@ -107,7 +107,7 @@ require APP_ROOT . "/views/inc/header.php";
                     <div class="d-flex align-items-center">
                         <!-- Avatar -->
                         <div class="avatar avatar-story me-2">
-                            <a href="<?= URL_ROOT . "/profile/$post->user_id" ?>"> <img class="avatar-img rounded-circle" src="<?= $post->profile_img; ?>" alt="<?= $post->name; ?>"> </a>
+                            <a href="<?= URL_ROOT . "/profile/$post->user_id" ?>"> <img class="avatar-img rounded-circle" src="<?= ($post->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$post->profile_img}" : "/img/users/{$post->profile_img}"; ?>" alt="<?= $post->name; ?>"> </a>
                         </div>
                         <!-- Info -->
                         <div>

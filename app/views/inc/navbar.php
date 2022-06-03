@@ -35,7 +35,7 @@
             <div class="dropdown text-end">
                 <!-- Dropdown button -->
                 <a href="#" class="d-block link-secondary btn-lg text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img style="height: 2.5rem; width: 2.5rem; object-fit:cover;" class="rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>">
+                    <img style="height: 2.5rem; width: 2.5rem; object-fit:cover;" class="rounded-circle" src="<?= ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "/img/users/{$data["user"]->profile_img}"; ?>" alt="<?= $data["user"]->username; ?>" alt="<?= $data["user"]->username; ?>">
                 </a>
                 <!-- End: Dropdown button -->
 

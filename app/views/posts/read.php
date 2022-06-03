@@ -4,6 +4,8 @@ $site_title = "Full Post";
 
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
+
+$profile_image_path = ($data["postUser"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["postUser"]->profile_img}" : "/img/users/{$data["postUser"]->profile_img}";
 ?>
 
 <style>
@@ -19,7 +21,7 @@ require APP_ROOT . "/views/inc/header.php";
         <div class="d-flex align-items-center">
             <!-- Avatar -->
             <div class="avatar avatar-story me-2">
-                <a href="<?= URL_ROOT . "/profile/" . $data["postUser"]->id; ?>"> <img class="avatar-img rounded-circle" src="<?= $data["postUser"]->profile_img; ?>" alt="<?= $data["postUser"]->name; ?>"></a>
+                <a href="<?= URL_ROOT . "/profile/" . $data["postUser"]->id; ?>"> <img class="avatar-img rounded-circle" src="<?= $profile_image_path; ?>" alt="<?= $data["postUser"]->name; ?>"></a>
             </div>
             <!-- Info -->
             <div>

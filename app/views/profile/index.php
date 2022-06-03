@@ -2,8 +2,14 @@
 // Site Title
 $site_title = "{$data['user']->name} | Bondhu";
 
+
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
+
+$profile_image_path = ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "/img/users/{$data["user"]->profile_img}";
+
+$cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img/users/{$data["user"]->cover_img}" : "/img/users/{$data["user"]->cover_img}";
+
 ?>
 
 <style>
@@ -20,14 +26,14 @@ require APP_ROOT . "/views/inc/header.php";
             <!-- My profile START -->
             <div class="card">
                 <!-- Cover image -->
-                <div class="h-200px rounded-top" style="background-image:url(<?= !empty($data["user"]->cover_img) ? $data["user"]->cover_img : 'https://images.squarespace-cdn.com/content/v1/57392608b6aa607768e72055/1477265014203-CDUS7TTWL7BJNIB5DYVG/artwork_1.jpg'; ?>); background-color: gray; background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="h-200px rounded-top" style="background-image:url(<?= $cover_image_path; ?>); background-color: gray; background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
                 <!-- Card body START -->
                 <div class="card-body py-0">
                     <div class="d-sm-flex align-items-start text-center text-sm-start">
                         <div>
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-3">
-                                <img class="avatar-img rounded-circle border border-white border-3" <?= "src='{$data["user"]->profile_img}' alt='{$data["user"]->name}'"; ?>>
+                                <img class="avatar-img bg-white rounded-circle border border-white border-3" src="<?= $profile_image_path; ?>" alt="<?= "{$data['user']->name}"; ?>" ;>
                             </div>
                         </div>
                         <div class="ms-sm-3 mt-sm-3">
@@ -120,24 +126,24 @@ require APP_ROOT . "/views/inc/header.php";
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
-                        <a href="<?= URL_ROOT . "/users/profile/{$data["user"]->id}"; ?>"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->username; ?>"> </a>
+                        <a href="<?= URL_ROOT . "/users/profile/{$data["user"]->id}"; ?>"> <img class="avatar-img rounded-circle" src="<?= $profile_image_path; ?>" alt="<?= $data["user"]->username; ?>"> </a>
                     </div>
                     <!-- Post input -->
-                    <form class="w-100" action="<?= URL_ROOT; ?>/posts/create" method="POST" id="post">
+                    <form class="w-100" action="<?= URL_ROOT; ?>/posts/create" method="POST" id="post" enctype="multipart/form-data">
                         <textarea name="body" class="form-control pe-4" rows="2" data-autoresize="" placeholder="Share your thoughts..."></textarea>
 
                         <!-- Post Image Url -->
                         <div class="collapse multi-collapse" id="postImageUrlToggler">
                             <div class="my-3">
-                                <label for="post_img" class="label text-muted mb-2">Image Link</label>
-                                <input type="url" name="post_img" class="form-control" id="post_img" placeholder="https://example.com/image.jpg">
+                                <label for="post_img" class="label text-muted mb-2">Post Image</label>
+                                <input type="file" name="post_img" class="form-control" id="post_img" placeholder="https://example.com/image.jpg">
                             </div>
                         </div>
 
                         <!-- Post Video Url -->
                         <div class="collapse multi-collapse" id="postVideoUrlToggler">
                             <div class="my-3">
-                                <label for="post_video" class="label text-muted mb-2">Video Link</label>
+                                <label for="post_video" class="label text-muted mb-2">YouTube Video Link</label>
                                 <input type="url" name="post_video" class="form-control" id="post_video" placeholder="https://youtu.be/SMKPKGW083c">
                             </div>
                         </div>
@@ -168,7 +174,7 @@ require APP_ROOT . "/views/inc/header.php";
                         <div class="d-flex align-items-center">
                             <!-- Avatar -->
                             <div class="avatar avatar-story me-2">
-                                <a href="<?= URL_ROOT . "/profile/{$data['user']->id}" ?>"> <img class="avatar-img rounded-circle" src="<?= $data['user']->profile_img; ?>" alt="<?= $data['user']->name; ?>"> </a>
+                                <a href="<?= URL_ROOT . "/profile/{$data['user']->id}" ?>"> <img class="avatar-img rounded-circle" src="<?= $profile_image_path; ?>" alt="<?= $data['user']->name; ?>"> </a>
                             </div>
                             <!-- Info -->
                             <div>
@@ -179,7 +185,7 @@ require APP_ROOT . "/views/inc/header.php";
 
                                     <p class="small text-muted fw-semibold">
                                         <i class="bi bi-clock"></i>
-                                        <?= date("h:i A, D m, Y", strtotime($data['user']->created_at)); ?>
+                                        <?= date("h:i A, D m, Y", strtotime($post->posted_at)); ?>
                                     </p>
                                 </div>
                             </div>

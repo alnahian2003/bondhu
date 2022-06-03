@@ -4,6 +4,8 @@ $site_title = "Create Post";
 
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
+
+$profile_image_path = ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "/img/users/{$data["user"]->profile_img}";
 ?>
 <style>
     body {
@@ -24,10 +26,10 @@ require APP_ROOT . "/views/inc/header.php";
             <div class="d-flex mb-3 gap-2">
                 <!-- Avatar -->
                 <div class="avatar avatar-xs me-2">
-                    <a href="<?= URL_ROOT; ?>/users/profile"> <img class="avatar-img rounded-circle" src="<?= $data["user"]->profile_img; ?>" alt="<?= $data["user"]->name; ?>"> </a>
+                    <a href="<?= URL_ROOT; ?>/profile"> <img class="avatar-img rounded-circle" src="<?= $profile_image_path ?>" alt="<?= $data["user"]->name; ?>"> </a>
                 </div>
                 <!-- Post input -->
-                <form class="w-100" id="createPost" method="POST" action="<?= URL_ROOT; ?>/posts/create">
+                <form class="w-100" id="createPost" method="POST" action="<?= URL_ROOT; ?>/posts/create" enctype="multipart/form-data">
                     <!-- Post Title -->
                     <div class="mb-3">
                         <label for="title" class="label fw-bold text-dark mb-2">Title (Optional)</label>
@@ -43,8 +45,8 @@ require APP_ROOT . "/views/inc/header.php";
                     <!-- Post Image Url -->
                     <div class="collapse multi-collapse" id="postImageUrlToggler">
                         <div class="my-3">
-                            <label for="post_img" class="label fw-bold text-dark mb-2">Post Image Link (Optional)</label>
-                            <input type="url" name="post_img" class="form-control <?= !empty($data["post_img_error"]) ? "is-invalid" : ''; ?>" id="post_img" value="<?= $data["post_img"]; ?>" placeholder="https://example.com/image.jpg">
+                            <label for="post_img" class="label fw-bold text-dark mb-2">Post Image (Optional)</label>
+                            <input type="file" name="post_img" class="form-control <?= !empty($data["post_img_error"]) ? "is-invalid" : ''; ?>" id="post_img">
                             <span class="invalid-feedback"><?= $data["post_img_error"]; ?></span>
                         </div>
                     </div>

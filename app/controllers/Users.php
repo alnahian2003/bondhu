@@ -42,6 +42,8 @@ class Users extends Controller
             } else {
                 if ($this->userModel->findUserByEmail($data["email"])) {
                     $data["email_error"] = "Email already taken.";
+                } elseif (!filter_var($data["email"], FILTER_VALIDATE_EMAIL)) {
+                    $data["email_error"] = "Invalid email format";
                 }
             }
 
@@ -68,10 +70,37 @@ class Users extends Controller
 
                 // Register the User Finally
                 if ($this->userModel->register($data)) {
+                    /**
+                     * make a directory under the name of user email address
+                     * example: if user email is alnahian2003@gmail.com
+                     * then make the directory name "alnahian2003"
+                     * and then create three more directories
+                     * 1. profile, 2. cover 3. post
+                     *  */
+
+                    //  Step 1 - Create the base file
+                    $email = $data["email"];
+                    $email = explode("@", $email);
+                    $nameFromEmail = $email[0];
+                    $baseDir = "img/users/" . $nameFromEmail;
+                    mkdir($baseDir);
+
+                    // Step 2 - Create the sub directory Profile
+                    $profileDir = $baseDir . "/profile";
+                    mkdir($profileDir);
+
+                    // Step 3 - Create the sub directory Cover
+                    $coverDir = $baseDir . "/cover";
+                    mkdir($coverDir);
+
+                    // Step 4 - Create the sub directory Posts
+                    $postDir = $baseDir . "/post";
+                    mkdir($postDir);
+
                     // Show Flash Message
                     flash("signup_success", "You are registerd. Please Log In!");
                     // Redirect to homepage
-                    redirect("users/login");
+                    redirect("profile/edit");
                 } else {
                     die("Something Went Wrong, can't register");
                 }

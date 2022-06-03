@@ -4,6 +4,10 @@ $site_title = "Edit Profile — {$data['user']->name}";
 
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
+
+$profile_image_path = ($data["user"]->profile_img == "default.svg") ? URL_ROOT . "/img/users/{$data["user"]->profile_img}" : "/img/users/{$data["user"]->profile_img}";
+
+$cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img/users/{$data["user"]->cover_img}" : "/img/users/{$data["user"]->cover_img}";
 ?>
 
 <style>
@@ -46,7 +50,7 @@ require APP_ROOT . "/views/inc/header.php";
                     <?php if (!empty($data["user"]->profile_img)) : ?>
                         <!-- Current Profile Picture -->
                         <div class="avatar avatar-xxl mb-3">
-                            <img class="avatar-img rounded-circle border border-white border-3" src="<?= $data["user"]->profile_img ?>" alt="<?= $data["user"]->name ?>">
+                            <img class="avatar-img rounded-circle border border-white border-3" src="<?= $profile_image_path ?>" alt="<?= $data["user"]->name ?>">
                         </div>
                     <?php endif; ?>
                 </label>
@@ -140,7 +144,7 @@ require APP_ROOT . "/views/inc/header.php";
             </div>
         </div>
 
-        <button class="btn btn-lg btn-primary mx-auto w-100 mt-3" type="submit">Edit Profile</button>
+        <button class="btn btn-lg btn-primary mx-auto w-100 mt-3" type="submit">Proceed</button>
     </form>
 </div>
 
