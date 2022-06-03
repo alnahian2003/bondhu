@@ -40,7 +40,7 @@ Demo user's login credentials are username:
 <section>
   <h2>Project Screenshots</h2>
   <figure>
-    <img src="screenshots/newsfeed.png" alt="Newsfeed 1" style="width: 100%" />
+    <img src="screenshots/home.png" alt="Home Page" style="width: 100%" />
     <figcaption>Home Page</figcaption>
   </figure>
 
