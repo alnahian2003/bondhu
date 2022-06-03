@@ -26,7 +26,6 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
 
 <!-- Edit Profile Form -->
 <div class="col-md-8 bg-white bg-gradient p-5 rounded-3 mx-auto">
-    <?php flash("profile_image_message"); ?>
     <h1>Edit Profile</h1>
     <p class="form-text text-muted">
         Edit your public profile informations such as Profile Picture, Username, Bio, About, Location, etc.
@@ -108,16 +107,17 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
         <div class="row g-2 my-2">
             <div class="col-md">
                 <div class="form-floating">
-                    <input type="text" class="form-control" name="username" id="username" placeholder="username123" value="<?= $data["user"]->username; ?>">
+                    <input type="text" class="form-control <?= !empty($data["username_error"]) ? "is-invalid" : ''; ?>" name="username" id="username" placeholder="username123" value="<?= $data["user"]->username; ?>">
                     <label for="username">Username</label>
+                    <span class="invalid-feedback"><?= $data["username_error"]; ?></span>
                 </div>
             </div>
             <div class="col-md">
                 <div class="form-floating">
                     <input type="email" class="form-control <?= !empty($data["email_error"]) ? "is-invalid" : ''; ?>" name="email" id="email" placeholder="email@yourmai.com" value="<?= $data["user"]->email; ?>">
                     <label for="email">Email Address</label>
+                    <span class="invalid-feedback"><?= $data["email_error"]; ?></span>
                 </div>
-                <span class="invalid-feedback"><?= $data["email_error"]; ?></span>
             </div>
         </div>
 

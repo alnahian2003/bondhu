@@ -27,7 +27,6 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
 
 <!-- Edit Profile Form -->
 <div class="col-md-8 bg-white bg-gradient p-5 rounded-3 mx-auto">
-    <?php flash("profile_image_message"); ?>
     <h1>Profile Settings</h1>
     <p class="form-text text-muted">
         Control or update your profile settings like changing your name, password or deleting your account.

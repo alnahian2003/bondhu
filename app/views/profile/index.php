@@ -44,9 +44,14 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
                                 <?php endif; ?>
                             </h1>
                         </div>
-                        <!-- Button -->
+
+                        <!-- Two Buttons -->
                         <div class="d-flex mt-3 justify-content-center ms-sm-auto">
-                            <a class="btn btn-primary me-2" href="<?= URL_ROOT; ?>/profile/edit" type="button"> <i class="bi bi-pencil-square pe-1"></i> Edit profile </a>
+                            <!-- Add Post Button -->
+                            <a class="btn btn-light text-primary bg-gradient me-2" href="<?= URL_ROOT; ?>/posts/create" type="button"> <i class="bi bi-plus-square pe-1"></i> Add Post </a>
+
+                            <!-- Edit Profile Button -->
+                            <a class="btn btn-primary bg-gradient me-2" href="<?= URL_ROOT; ?>/profile/edit" type="button"> <i class="bi bi-pencil-square pe-1"></i> Edit profile </a>
                         </div>
                     </div>
                     <!-- List profile -->
@@ -80,7 +85,7 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
 
     <div class="row overflow-hidden">
         <!-- left sidebar START -->
-        <div class="col-lg-4">
+        <div class="col-lg-4 mb-3">
 
             <div class="row g-4">
 
@@ -121,6 +126,7 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
 
         <div class="col-lg-8">
             <?php flash("post_message"); ?>
+            <?php flash("edit_profile_message"); ?>
             <!-- Create Post -->
             <div class="card card-body mb-3">
                 <div class="d-flex mb-3">

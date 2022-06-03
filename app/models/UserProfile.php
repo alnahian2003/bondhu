@@ -34,11 +34,63 @@ class UserProfile extends Database
         }
     }
 
+    // Find User By username
+    public function findByUsername($username)
+    {
+        // Make query
+        $this->db->query("SELECT * FROM users WHERE username = :username");
+
+        // Bind value
+        $this->db->bind(":username", $username);
+
+        // Find the single row
+        $row = $this->db->single();
+
+        // Check row
+        if ($this->db->RowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function uploadProfileImg($id, $fileWithPath)
     {
         $this->db->query("UPDATE users SET profile_img = :filepath WHERE id = :id");
         $this->db->bind(":id", $id);
         $this->db->bind(":filepath", $fileWithPath);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function uploadCoverImg($id, $fileWithPath)
+    {
+        $this->db->query("UPDATE users SET cover_img = :filepath WHERE id = :id");
+        $this->db->bind(":id", $id);
+        $this->db->bind(":filepath", $fileWithPath);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function editProfile($userId, $username, $email, $bio, $workplace, $location, $birthdate, $relationship)
+    {
+        $this->db->query("UPDATE users SET username = :username, email = :email, bio = :bio, company_name = :workplace, location = :location, birthdate = :birthdate, relationship = :relationship  WHERE id = :id");
+        $this->db->bind(":id", $userId);
+        $this->db->bind(":username", $username);
+        $this->db->bind(":email", $email);
+        $this->db->bind(":bio", $bio);
+        $this->db->bind(":workplace", $workplace);
+        $this->db->bind(":location", $location);
+        $this->db->bind(":birthdate", $birthdate);
+        $this->db->bind(":relationship", $relationship);
 
         if ($this->db->execute()) {
             return true;

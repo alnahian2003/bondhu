@@ -100,7 +100,7 @@ class Users extends Controller
                     // Show Flash Message
                     flash("signup_success", "You are registerd. Please Log In!");
                     // Redirect to homepage
-                    redirect("profile/edit");
+                    redirect("users/login");
                 } else {
                     die("Something Went Wrong, can't register");
                 }
@@ -205,8 +205,8 @@ class Users extends Controller
         $_SESSION["name"] = $loggedUser->name;
         $_SESSION["email"] = $loggedUser->email;
 
-        // redirect("profile/edit");
-        redirect("posts");
+        redirect("profile/edit");
+        // redirect("users/login");
     }
 
     public function logout()
@@ -217,7 +217,7 @@ class Users extends Controller
 
         session_destroy();
 
-        redirect("pages/index");
+        redirect("index");
     }
 }
 

@@ -33,3 +33,9 @@ define("GITHUB_REPO", "https://github.com/alnahian2003/bondhu");
 
 // Set Default Timezone
 date_default_timezone_set("Asia/Dhaka");
+
+// File Sizes
+define('KB', 1024);
+define('MB', 1048576);
+define('GB', 1073741824);
+define('TB', 1099511627776);
