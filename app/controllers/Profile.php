@@ -34,7 +34,10 @@ class Profile extends Controller
         if (!isLoggedIn()) {
             redirect("pages/index");
         } else {
-            $data = [];
+            $userProfile = $this->profileModel->getUserProfile($_SESSION["user_id"]);
+            $data = [
+                "user" => $userProfile,
+            ];
             return $this->view("profile/settings", $data);
         }
     }
@@ -49,14 +52,14 @@ class Profile extends Controller
                 "user" => $userProfile,
             ];
 
-            $email = $data["user"]->email;
-            $email = explode("@", $email);
-            $nameFromEmail = $email[0];
-            $baseDir = "img/users/" . $nameFromEmail;
-
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // Profile Image uploading validation
+                $email = $data["user"]->email;
+                $email = explode("@", $email);
+                $nameFromEmail = $email[0];
+                $baseDir = "img/users/" . $nameFromEmail;
 
-                if (isset($_FILES["profileImg"])) {
+                if (isset($_FILES["profileImg"]) && !empty($_FILES["profileImg"]["name"])) {
                     $profileImgDir = $baseDir . "/profile/";
                     $uploadedImg = $_FILES["profileImg"];
                     $uploadOk = 1;
@@ -100,9 +103,14 @@ class Profile extends Controller
                         flash("profile_image_message", "Sorry, your file was not uploaded!", "alert-danger");
                         // if everything is ok, try to upload file
                     } else {
-                        $filepath = URL_ROOT . "/" . $profileImgDir . $uploadedImg["name"];
-                        if ($this->profileModel->uploadProfileImg($_SESSION["user_id"], $filepath) && move_uploaded_file($uploadedImg["tmp_name"], $profileImgDir . $uploadedImg["name"])) {
+                        if (move_uploaded_file($uploadedImg["tmp_name"], $profileImgDir . $uploadedImg["name"])) {
+
+                            $filepath = URL_ROOT . "/" . $profileImgDir . $uploadedImg["name"];
+                            $this->profileModel->uploadProfileImg($_SESSION["user_id"], $filepath);
+
                             flash("profile_image_message", "The file " . htmlspecialchars(basename($uploadedImg["name"])) . " has been uploaded.");
+
+                            exit();
                         } else {
                             flash("profile_image_message", "Sorry, there was an error uploading your image.", "alert-danger");
                         }
