@@ -116,7 +116,32 @@ class Profile extends Controller
                         }
                     }
                 }
+
+                $data = [
+                    "user" => $userProfile,
+                    "username" => htmlspecialchars(trim($_POST["username"])),
+                    "email" => htmlspecialchars(trim($_POST["email"])),
+                    "bio" => htmlspecialchars(trim($_POST["bio"])),
+                    "workplace" => htmlspecialchars(trim($_POST["company_name"])),
+                    "location" => htmlspecialchars(trim($_POST["location"])),
+                    "birthdate" => htmlspecialchars(trim($_POST["birthdate"])),
+                    "relationship" => htmlspecialchars(trim($_POST["relationship"])),
+                ];
+
+                // Validate email
+            } else {
+                $data = [
+                    "user" => $userProfile,
+                    "username" => "",
+                    "email" => "",
+                    "bio" => "",
+                    "workplace" => "",
+                    "location" => "",
+                    "birthdate" => "",
+                    "relationship" => "",
+                ];
             }
+            print_r($data);
             return $this->view("profile/edit", $data);
         }
     }

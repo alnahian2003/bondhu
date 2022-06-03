@@ -114,9 +114,10 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
             </div>
             <div class="col-md">
                 <div class="form-floating">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="email@yourmai.com" value="<?= $data["user"]->email; ?>">
+                    <input type="email" class="form-control <?= !empty($data["email_error"]) ? "is-invalid" : ''; ?>" name="email" id="email" placeholder="email@yourmai.com" value="<?= $data["user"]->email; ?>">
                     <label for="email">Email Address</label>
                 </div>
+                <span class="invalid-feedback"><?= $data["email_error"]; ?></span>
             </div>
         </div>
 
@@ -159,7 +160,7 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
             <div class="col-md">
                 <div class="form-floating">
                     <select class="form-control" name="relationship" id="relationship">
-                        <option disabled selected>Select a Status</option>
+                        <option disabled>Select a Status</option>
 
                         <option value="Single" <?php if ($data["user"]->relationship === "Single") {
                                                     echo "selected";
