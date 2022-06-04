@@ -19,7 +19,7 @@
 <hr />
 
 <section>
-<h5>NOTE: Upload the Check config folder and update with your preferred data ⚠</h5>
+<h5>NOTE: Upload "bondhu.sql" to your PhpMyAdmin or MySQL db and then Check config folder and update with your preferred data ⚠</h5>
 <ul>
 Demo user's login credentials are username: 
 <ol>
