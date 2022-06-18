@@ -43,60 +43,60 @@ Demo user's login credentials are username:
 
 <div>
     <h4>New User/Account Related</h4>
-        <input type="checkbox" disabled checked> Create New Account
-        <br>
-        <input type="checkbox" disabled checked> Login To An Existing Account
-        <br>
-        <input type="checkbox" disabled> Resetting User Password
-        <br>
-        <input type="checkbox" disabled> Forget Password
-        <br>
-        <input type="checkbox" disabled> Deleting a User Account
+      - [x] Create New Account
+      <br>
+      - [x] Login To An Existing Account
+      <br>
+      - [ ] Resetting User Password
+      <br>
+      - [ ] Forget Password
+      <br>
+      - [ ] Deleting a User Account
 </div>
 
 <div>
     <h4>Newsfeed & Post Related</h4>
-            <input type="checkbox" disabled checked> Newsfeed Section
-            <br>
-            <input type="checkbox" disabled checked> View Full Post Page
-            <br>
-            <input type="checkbox" disabled checked> Create a Post
-            <br>
-            <input type="checkbox" disabled checked> Edit a Post
-            <br>
-            <input type="checkbox" disabled checked> Delete a Post
-            <br>
-            <input type="checkbox" disabled checked> Upload a Post Image
-            <br>
-            <input type="checkbox" disabled checked> Attach a Video URL from <strong>YouTube</strong>
-            <br>
-            <input type="checkbox" disabled> Upload a Post Image
-            <br>
-            <input type="checkbox" disabled> Like a Post
-            <br>
-            <input type="checkbox" disabled> Comment on a Post
-            <br>
-            <input type="checkbox" disabled> Share a Post
+      - [x] Newsfeed Section
+      <br>
+      - [x] View Full Post Page
+      <br>
+      - [x] Create a Post
+      <br>
+      - [x] Edit a Post
+      <br>
+      - [x] Delete a Post
+      <br>
+      - [x] Upload a Post Image
+      <br>
+      - [x] Attach a Video URL from <strong>YouTube</strong>
+      <br>
+      - [ ] Upload a Post Image
+      <br>
+      - [ ] Like a Post
+      <br>
+      - [ ] Comment on a Post
+      <br>
+      - [ ] Share a Post
 </div>
 
 <div>
     <h4>Profile Related</h4>
-            <input type="checkbox" disabled checked> Personal Profile Page
-            <br>
-            <input type="checkbox" disabled checked> Other Users Profile Page
-            <br>
-            <input type="checkbox" disabled checked> Profile Image
-            <br>
-            <input type="checkbox" disabled checked> Cover Image
-            <br>
-            <input type="checkbox" disabled checked> Edit Profile
-            <br>
-            <input type="checkbox" disabled checked> Change Profile Image
-            <br>
-            <input type="checkbox" disabled checked> Change Cover Image
-            <br>
-            <input type="checkbox" disabled checked> Update About Details
-            <br>
+      - [x] Personal Profile Page
+      <br>
+      - [x] Other Users Profile Page
+      <br>
+      - [x] Profile Image
+      <br>
+      - [x] Cover Image
+      <br>
+      - [x] Edit Profile
+      <br>
+      - [x] Change Profile Image
+      <br>
+      - [x] Change Cover Image
+      <br>
+      - [x] Update About Details
+      <br>
 </div>
 
 </section>
