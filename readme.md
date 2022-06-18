@@ -44,9 +44,14 @@ Demo user's login credentials are username:
 <div>
     <h4>New User/Account Related</h4>
         <input type="checkbox" disabled checked> Create New Account
-            <br>
+        <br>
         <input type="checkbox" disabled checked> Login To An Existing Account
-            <br>
+        <br>
+        <input type="checkbox" disabled> Resetting User Password
+        <br>
+        <input type="checkbox" disabled> Forget Password
+        <br>
+        <input type="checkbox" disabled> Deleting a User Account
 </div>
 
 <div>
@@ -65,7 +70,33 @@ Demo user's login credentials are username:
             <br>
             <input type="checkbox" disabled checked> Attach a Video URL from <strong>YouTube</strong>
             <br>
-            <input type="checkbox" disabled checked> Upload a Post Image
+            <input type="checkbox" disabled> Upload a Post Image
+            <br>
+            <input type="checkbox" disabled> Like a Post
+            <br>
+            <input type="checkbox" disabled> Comment on a Post
+            <br>
+            <input type="checkbox" disabled> Share a Post
+</div>
+
+<div>
+    <h4>Profile Related</h4>
+            <input type="checkbox" disabled checked> Personal Profile Page
+            <br>
+            <input type="checkbox" disabled checked> Other Users Profile Page
+            <br>
+            <input type="checkbox" disabled checked> Profile Image
+            <br>
+            <input type="checkbox" disabled checked> Cover Image
+            <br>
+            <input type="checkbox" disabled checked> Edit Profile
+            <br>
+            <input type="checkbox" disabled checked> Change Profile Image
+            <br>
+            <input type="checkbox" disabled checked> Change Cover Image
+            <br>
+            <input type="checkbox" disabled checked> Update About Details
+            <br>
 </div>
 
 </section>
