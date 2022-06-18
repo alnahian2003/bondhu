@@ -37,6 +37,40 @@ Demo user's login credentials are username:
 </section>
 
 <hr/>
+
+<section>
+<h3>Features</h3>
+
+<div>
+    <h4>New User/Account Related</h4>
+        <input type="checkbox" disabled checked> Create New Account
+            <br>
+        <input type="checkbox" disabled checked> Login To An Existing Account
+            <br>
+</div>
+
+<div>
+    <h4>Newsfeed & Post Related</h4>
+            <input type="checkbox" disabled checked> Newsfeed Section
+            <br>
+            <input type="checkbox" disabled checked> View Full Post Page
+            <br>
+            <input type="checkbox" disabled checked> Create a Post
+            <br>
+            <input type="checkbox" disabled checked> Edit a Post
+            <br>
+            <input type="checkbox" disabled checked> Delete a Post
+            <br>
+            <input type="checkbox" disabled checked> Upload a Post Image
+            <br>
+            <input type="checkbox" disabled checked> Attach a Video URL from <strong>YouTube</strong>
+            <br>
+            <input type="checkbox" disabled checked> Upload a Post Image
+</div>
+
+</section>
+<hr/>
+
 <section>
   <h2>Project Screenshots</h2>
   <figure>
