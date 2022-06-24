@@ -98,4 +98,18 @@ class UserProfile extends Database
             return false;
         }
     }
+
+    // Delete an User from Settings Page
+    public function delete($userId)
+    {
+        $this->db->query("DELETE FROM users WHERE id = :id");
+        $this->db->bind(":id", $userId);
+
+        // Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

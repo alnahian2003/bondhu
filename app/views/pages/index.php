@@ -2,7 +2,7 @@
 // Include Header
 require APP_ROOT . "/views/inc/header.php";
 ?>
-
+<?php flash("user_deleted"); ?>
 <div class="p-5 bg-dark bg-gradient text-white rounded">
     <div class="container">
         <div class="row d-flex flex-row justify-content-between align-items-center bs-gap-5">

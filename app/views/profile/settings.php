@@ -56,6 +56,8 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
 
         <!-- Danger Zone -->
         <div class="row g-2 my-2">
+            <form action="" method="post"></form>
+            <input type="hidden" name="delete">
             <a href="" class="btn btn-lg btn-light border-danger text-danger bg-gradient mx-auto w-100 mt-3" type="submit" onclick="return confirm('Are you sure you want to delete your account?');">Delete Account?</a>
         </div>
     </form>

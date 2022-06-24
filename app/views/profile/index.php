@@ -132,7 +132,7 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
-                        <a href="<?= URL_ROOT . "/users/profile/{$data["user"]->id}"; ?>"> <img class="avatar-img rounded-circle" src="<?= $profile_image_path; ?>" alt="<?= $data["user"]->username; ?>"> </a>
+                        <a href="<?= URL_ROOT . "/profile"; ?>"> <img class="avatar-img rounded-circle" src="<?= $profile_image_path; ?>" alt="<?= $data["user"]->username; ?>"> </a>
                     </div>
                     <!-- Post input -->
                     <form class="w-100" action="<?= URL_ROOT; ?>/posts/create" method="POST" id="post" enctype="multipart/form-data">

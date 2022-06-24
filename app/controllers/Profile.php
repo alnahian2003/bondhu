@@ -38,6 +38,17 @@ class Profile extends Controller
             $data = [
                 "user" => $userProfile,
             ];
+
+            // Confirming The Delete of The User
+            if (isset($_POST["delete"])) {
+                if ($this->profileModel->delete($_SESSION["user_id"])) {
+                    redirect("pages/index");
+                    flash("user_deleted", "Account Deleted Successfully!", "alert-info");
+                    session_destroy();
+                }
+            }
+
+
             return $this->view("profile/settings", $data);
         }
     }
