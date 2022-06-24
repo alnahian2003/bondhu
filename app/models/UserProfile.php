@@ -100,13 +100,50 @@ class UserProfile extends Database
     }
 
     // Delete an User from Settings Page
-    public function delete($userId)
+    public function delete($userId, $userEmail)
     {
         $this->db->query("DELETE FROM users WHERE id = :id");
         $this->db->bind(":id", $userId);
 
         // Execute
         if ($this->db->execute()) {
+            // Delete all the posts by this user
+            $this->db->query("DELETE FROM posts WHERE user_id = :id");
+            $this->db->bind(":id", $userId);
+            $this->db->execute();
+
+            // Don't only delete the user, delete all the associative uploaded files by this user
+            // Format user email address for the user's very own directory
+            $email = $userEmail;
+            $email = explode("@", $email);
+            $nameFromEmail = $email[0];
+            $baseDir = "img/users/" . $nameFromEmail;
+
+            /* Use RecursiveDirectoryIterator because rmdir() just don't delete
+                a directory, which has some file in it.
+            */
+            $iterate = new RecursiveDirectoryIterator($baseDir, RecursiveDirectoryIterator::SKIP_DOTS);
+            $files = new RecursiveIteratorIterator(
+                $iterate,
+                RecursiveIteratorIterator::CHILD_FIRST
+            );
+            foreach ($files as $file) {
+                if ($file->isDir()) {
+                    rmdir($file->getRealPath());
+                } else {
+                    unlink($file->getRealPath());
+                }
+            }
+            rmdir($baseDir);
+
+            flash("user_deleted", "Account Deleted Successfully!"); // show this on homepage
+
+            unset($_SESSION["user_id"]);
+            unset($_SESSION["name"]);
+            unset($_SESSION["email"]);
+
+            redirect("pages/index");
+
             return true;
         } else {
             return false;

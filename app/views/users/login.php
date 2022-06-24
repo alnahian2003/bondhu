@@ -40,7 +40,7 @@ require APP_ROOT . "/views/inc/header.php";
             </form>
             <hr class="border">
             <div class="text-center mt-3">
-                <a href="<?= URL_ROOT; ?>/users/signup">New to Bondhu? Sign In</a>
+                <a href="<?= URL_ROOT; ?>/users/signup">New to Bondhu? Sign Up</a>
             </div>
         </div>
     </div>

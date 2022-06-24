@@ -52,15 +52,15 @@ $cover_image_path = ($data["user"]->cover_img == "cover.jpg") ? URL_ROOT . "/img
         <div class="text-center">
             <button class="btn btn-primary mx-auto text-center mt-3" type="submit"><i class="bi bi-gear"></i> Update Settings</button>
         </div>
-
-
-        <!-- Danger Zone -->
-        <div class="row g-2 my-2">
-            <form action="" method="post"></form>
-            <input type="hidden" name="delete">
-            <a href="" class="btn btn-lg btn-light border-danger text-danger bg-gradient mx-auto w-100 mt-3" type="submit" onclick="return confirm('Are you sure you want to delete your account?');">Delete Account?</a>
-        </div>
     </form>
+
+    <!-- Danger Zone -->
+    <div class="row g-2 my-2">
+        <?php flash("delete_account_failed"); ?>
+        <form method="post">
+            <input type="submit" name="delete" class="btn btn-lg btn-light border-danger text-danger bg-gradient mx-auto w-100 mt-3" onclick="return confirm('Are you sure you want to delete your account?');" value="Delete Account?">
+        </form>
+    </div>
 </div>
 
 <?php

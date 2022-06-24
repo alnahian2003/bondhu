@@ -31,14 +31,23 @@ class Posts extends Controller
         // Check for POST
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize & Process Create Post Form
-            // $_POST = htmlspecialchars(trim(INPUT_POST));
 
+            // Post Image uploading validation
+            $email = $_SESSION["email"];
+            $email = explode("@", $email);
+            $nameFromEmail = $email[0];
+            $baseDir = "img/users/" . $nameFromEmail;
+
+            // Remove all spaces, tabs, etc
+            $filename = preg_replace("/\s+/", "", $_FILES["post_img"]["name"]);
 
             $data = [
                 "user_id" => $_SESSION["user_id"],
                 "title" => isset($_POST['title']) ? htmlspecialchars(trim($_POST["title"])) : "",
                 "body" => htmlspecialchars(trim($_POST["body"])),
-                "post_img" => htmlspecialchars(trim($_POST["post_img"])),
+
+                "post_img" => !empty($_FILES["post_img"]["name"]) ? $baseDir . "/post/" . $filename : "",
+
                 "post_video" => htmlspecialchars(trim($_POST["post_video"])),
                 "user" => $currentUser,
 
@@ -54,12 +63,64 @@ class Posts extends Controller
                 $data["title_error"] = "Title must be within 255 characters";
             }
 
-            // Validate Image URL
-            if (!empty($data["post_img"])) {
-                if (!@getimagesize($data["post_img"])) {
-                    $data["post_img_error"] = "Please provide a valid image link";
+            // Validate Post Image
+            if (isset($_FILES["post_img"]) && !empty($_FILES["post_img"]["name"])) {
+                $postImgDir = $baseDir . "/post/";
+                $uploadedImg = $_FILES["post_img"];
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($uploadedImg["name"], PATHINFO_EXTENSION));
+
+                // Check if image file is a actual image or fake image
+                if (isset($_POST["submit"])) {
+                    $check = getimagesize($_FILES["post_img"]["tmp_name"]);
+                    if ($check !== false) {
+                        $uploadOk = 1;
+                    } else {
+                        $data["post_img_error"] = "Please try to upload an actual image";
+                        $uploadOk = 0;
+                    }
+                }
+
+                // Check if file already exists
+                if (file_exists($postImgDir . $uploadedImg["name"])) {
+                    $data["post_img_error"] = "Sorry, image already exists!";
+                    $uploadOk = 0;
+                }
+
+                // Check file size
+                if ($uploadedImg["size"] > 10 * MB) {
+                    $data["post_img_error"] = "Sorry, your image is too heavy";
+                    $uploadOk = 0;
+                }
+
+                // Allow certain file formats
+                if (
+                    $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif"
+                ) {
+                    $data["post_img_error"] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed!";
+                    $uploadOk = 0;
+                }
+
+                // Check if $uploadOk is set to 0 by an error
+                if ($uploadOk == 0) {
+                    $data["post_img_error"] = "Sorry, your image was not uploaded!";
+
+                    // if everything is ok, try to upload file
+                } else {
+                    // Remove all spaces, tabs, etc
+                    $filename = preg_replace("/\s+/", "", $uploadedImg["name"]);
+
+                    if (move_uploaded_file($uploadedImg["tmp_name"], $postImgDir . $filename)) {
+                        $data["post_img_error"] = "";
+                    } else {
+                        $data["post_img_error"] = "Sorry, there was an error uploading your image.";
+                    }
                 }
             }
+
+
+
             // Validate Video URL and return youtube video id
             if (!empty($data["post_video"])) {
                 if (!filter_var($data["post_video"], FILTER_VALIDATE_URL)) {
@@ -86,7 +147,7 @@ class Posts extends Controller
             // Make sure no error
             /*
                 * We're only gonna accept either just a title, or a body (one of these is must).
-                *If user include any image/video link, they're gonna show up too 
+                *If user include any image/video, they're gonna show up too 
             */
             // !empty($data["title"]) || !empty($data["body"]) || $data["post_img"] || $data["post_video"]
             if (empty($data["title_error"]) || empty($data["body_error"]) && (empty($data["post_img_error"]) || empty($data["post_video_error"]))) {
@@ -245,6 +306,10 @@ class Posts extends Controller
                 redirect("posts");
             } else {
                 if ($this->postModel->deletePost($postId)) {
+
+                    // delete the post image as well
+                    unlink($post->post_img);
+
                     flash("post_message", "<i class='bi bi-trash3'></i> Post Removed Successfully!", "alert-danger");
                     redirect("posts");
                 } else {

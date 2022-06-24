@@ -20,7 +20,7 @@
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="<?= URL_ROOT; ?>/users/signup" class="nav-link p-0 text-white">Create Account</a></li>
                         <li class="nav-item mb-2"><a href="<?= URL_ROOT; ?>/users/login" class="nav-link p-0 text-white">Log In</a></li>
-                        <li class="nav-item mb-2"><a href="<?= URL_ROOT; ?>/users/profile" class="nav-link p-0 text-white">Profile</a></li>
+                        <li class="nav-item mb-2"><a href="<?= URL_ROOT; ?>/profile" class="nav-link p-0 text-white">Profile</a></li>
                         <li class="nav-item mb-2"><a href="<?= URL_ROOT; ?>/users/logout" class="nav-link p-0 text-white">Log Out</a></li>
                     </ul>
                 </div>
