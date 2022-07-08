@@ -20,20 +20,9 @@
 
 <section>
 <h5>NOTE: Upload "bondhu.sql" to your PhpMyAdmin or MySQL db and then Check config folder and update with your preferred data ⚠</h5>
-<ul>
-Demo user's login credentials are username: 
-<ol>
-    Al Nahian
-    <li>Username: alnahian2003</li>
-    <li>Password: password</li>
-</ol>
 
-<ol>
-    Dwight K Schrute
-    <li>Username: dwight</li>
-    <li>Password: password</li>
-</ol>
-</ul>
+Create a new account and play around 💫
+
 </section>
 
 <hr/>
@@ -43,59 +32,59 @@ Demo user's login credentials are username:
 
 <div>
     <h4>New User/Account Related</h4>
-      - [x] Create New Account
+      ✅ Create New Account
       <br>
-      - [x] Login To An Existing Account
+      ✅ Login To An Existing Account
       <br>
-      - [ ] Resetting User Password
+      ❌ Resetting User Password
       <br>
-      - [ ] Forget Password
+      ❌ Forget Password
       <br>
-      - [ ] Deleting a User Account
+      ❌ Deleting a User Account
 </div>
 
 <div>
     <h4>Newsfeed & Post Related</h4>
-      - [x] Newsfeed Section
+      ✅ Newsfeed Section
       <br>
-      - [x] View Full Post Page
+      ✅ View Full Post Page
       <br>
-      - [x] Create a Post
+      ✅ Create a Post
       <br>
-      - [x] Edit a Post
+      ✅ Edit a Post
       <br>
-      - [x] Delete a Post
+      ✅ Delete a Post
       <br>
-      - [x] Upload a Post Image
+      ✅ Upload a Post Image
       <br>
-      - [x] Attach a Video URL from <strong>YouTube</strong>
+      ✅ Attach a Video URL from <strong>YouTube</strong>
       <br>
-      - [ ] Upload a Post Image
+      ❌ Upload a Post Image
       <br>
-      - [ ] Like a Post
+      ❌ Like a Post
       <br>
-      - [ ] Comment on a Post
+      ❌ Comment on a Post
       <br>
-      - [ ] Share a Post
+      ❌ Share a Post
 </div>
 
 <div>
     <h4>Profile Related</h4>
-      - [x] Personal Profile Page
+      ✅ Personal Profile Page
       <br>
-      - [x] Other Users Profile Page
+      ✅ Other Users Profile Page
       <br>
-      - [x] Profile Image
+      ✅ Profile Image
       <br>
-      - [x] Cover Image
+      ✅ Cover Image
       <br>
-      - [x] Edit Profile
+      ✅ Edit Profile
       <br>
-      - [x] Change Profile Image
+      ✅ Change Profile Image
       <br>
-      - [x] Change Cover Image
+      ✅ Change Cover Image
       <br>
-      - [x] Update About Details
+      ✅ Update About Details
       <br>
 </div>
 
@@ -105,82 +94,82 @@ Demo user's login credentials are username:
 <section>
   <h2>Project Screenshots</h2>
   <figure>
+    <h3><figcaption>Home Page</figcaption></h3>
     <img src="screenshots/home.png" alt="Home Page" style="width: 100%" />
-    <figcaption>Home Page</figcaption>
   </figure>
 
   <figure>
+    <h3><figcaption>Login Page</figcaption></h3>
     <img src="screenshots/signin.png" alt="Sign In Page" style="width: 100%" />
-    <figcaption>Login Page</figcaption>
   </figure>
 
   <figure>
+    <h3><figcaption>Create a New Account Page</figcaption></h3>
     <img
       src="screenshots/signup.png"
       alt="Create a New Account Page"
       style="width: 100%"
     />
-    <figcaption>Create a New Account Page</figcaption>
   </figure>
 
   <figure>
+    <h3><figcaption>Features Page</figcaption></h3>
     <img
       src="screenshots/features.png"
       alt="Features Page"
       style="width: 100%"
     />
-    <figcaption>Features Page</figcaption>
   </figure>
 
   <figure>
+    <h3><figcaption>Newsfeed Example 1</figcaption></h3>
     <img src="screenshots/newsfeed.png" alt="Newsfeed 1" style="width: 100%" />
-    <figcaption>Newsfeed Example 1</figcaption>
   </figure>
 
   <figure>
+    <h3><figcaption>Newsfeed Example 2</figcaption></h3>
     <img src="screenshots/newsfeed2.png" alt="Newsfeed 2" style="width: 100%" />
-    <figcaption>Newsfeed Example 2</figcaption>
   </figure>
 
   <figure>
+    <h3><figcaption>View Full Post Page</figcaption></h3>
     <img
       src="screenshots/full_post.png"
       alt="View Full Post Page"
       style="width: 100%"
     />
-    <figcaption>View Full Post Page</figcaption>
   </figure>
 
   <figure>
+    <h3><figcaption>Profile Page</figcaption></h3>
     <img src="screenshots/profile.png" alt="Profile Page" style="width: 100%" />
-    <figcaption>Profile Page</figcaption>
   </figure>
 
   <figure>
+    <h3><figcaption>Profile Page 2</figcaption></h3>
     <img
       src="screenshots/profile1.png"
       alt="Profile Page 2"
       style="width: 100%"
     />
-    <figcaption>Profile Page 2</figcaption>
   </figure>
 
   <figure>
+    <h3><figcaption>Edit Profile Page</figcaption></h3>
     <img
       src="screenshots/edit_profile.png"
       alt="Edit Profile Page"
       style="width: 100%"
     />
-    <figcaption>Edit Profile Page</figcaption>
   </figure>
 
   <figure>
+  <h3><figcaption>Settings Page</figcaption></h3>
     <img
       src="screenshots/settings.png"
       alt="Settings Page"
       style="width: 100%"
     />
-    <figcaption>Settings Page</figcaption>
   </figure>
 </section>
 
